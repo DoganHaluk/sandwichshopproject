@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HBH Broodjeszak - Contact</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type ="text/css" href="Harikastartpagina.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="bzscript.js"></script>
+</head>
+    
+</head>
+
+<body onload="haalWinkelwagentjeOp(); krijg_naam();">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" >
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Welkom</a>
+                        <!--<span id="gebruikernaam" style="color: white;"></span>-->
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="login" href="aanmelden.html">Aanmelden</a>
+                    </li>
+                    <li class="nav-item dropdown" id="gebruikersnaam"></li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contact.html">Contact<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promoties.html">Promoties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </li>    
+                    <li class="nav-item">
+                        <span id="antaal_producten" style="color: white;"></span>
+                   </li>
+                </ul>
+                
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div class="row justify-content-center m-0">
+            <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white"><h4><strong>CONTACT</strong></h4></button>
+        </div>
+    
+        <div class="container p-5">
+            <section class="dark-grey-text">
+              
+                <style>
+                    .map-container-section {
+                    overflow:hidden;
+                    padding-bottom:56.25%;
+                    position:relative;
+                    height:0;
+                    }
+                    .map-container-section iframe {
+                    left:0;
+                    top:0;
+                    height:100%;
+                    width:100%;
+                    position:absolute;
+                    }
+                </style>
+
+                <div class="row">
+                    <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
+                        <!-- Form with header -->
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+                                <form class="text-center" id="formulierform">
+                                    <h3 class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Contactformulier</h3>
+                                    <p class="text-center w-responsive mx-auto mb-4">Indien u vragen hebt, contacteer ons.</p>
+
+                                    <input type="text" id="contactFormName" class="form-control" placeholder="Naam" minlength="2" required>
+                                    <div id="formulier_warning_0"></div>
+                                    <input type="email" id="contactFormEmail" class="form-control mt-4" placeholder="E-mail" minlength="5" required>
+                                    <div id="formulier_warning_1"></div>
+                                    <input type="tel" id="contactFormTel" class="form-control mt-4" placeholder="Telefoonnummer" pattern="[0-9]{9,}" required>
+                                    <div id="formulier_warning_2"></div>
+
+                                    <div>
+                                        <select class="browser-default custom-select mt-4" id="contactFormInfo" onchange="get_vraag_selectie_value()" required>
+                                            <option value="" selected disabled>Type vraag</option>
+                                            <option value="1">Over product</option>
+                                            <option value="2">Over bestelling</option>
+                                            <option value="3">Over na-service</option>
+                                        </select>
+                                        <div id="bestellingnummer"></div>
+                                        <div id="formulier_warning_3"></div>
+                                    </div>
+                                    
+                                    <div class="form-group  mt-4">
+                                        <input type="text" class="form-control rounded-0" id="vraag" rows="10" placeholder="Vraag" minlength="2" required>
+                                        <div id="formulier_warning_4"></div>
+                                    </div>
+
+                                    <button class="btn btn-cyan btn-block" type="button" onclick="contactformulier_validatie();">Verstuur vraag<i class="far fa-paper-plane ml-2"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <!--Google map-->
+                        <div id="map-container-section" class="z-depth-1-half map-container-section mb-4 z-depth-5" style="height: 400px">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2498.9928767747247!2d4.418372315645732!3d51.21920687958879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f700fdbda557%3A0x39ab6c9590bba790!2sVan%20Wesenbekestraat%201%2C%202060%20Antwerpen!5e0!3m2!1snl!2sbe!4v1584011333315!5m2!1snl!2sbe" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <!-- Buttons-->
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-md-4 px-0">
+                                        <a>
+                                            <i class="fas fa-map-marker-alt fa-2x cyan-text"></i>
+                                        </a>
+                                        <p>Van Wesenbekestraat 1</p>
+                                        <p>2060, Antwerpen</p>
+                                        <p>België</p>
+                                    </div>
+
+                                    <div class="col-md-4 px-0">
+                                        <a href="tel:+3231112233">
+                                            <i class="fas fa-phone fa-2x cyan-text"></i>
+                                        </a>
+                                        <p>03/111 22 33</p>
+                                        <p>  
+                                            <b>Openingsuren: </b><br> 
+                                            09:00 – 19:00<br>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-4 px-0">
+                                        <a href="mailto:info@hbhbroodjes.be" target="_top">
+                                            <i class="fas fa-envelope fa-2x cyan-text"></i>
+                                        </a>
+                                        <p>info@hbhbroodjes.be</p>
+                                        <p><b>Open dagen: </b><br>
+                                        Maandag - Zaterdag <br> 
+                                        Zondag en Feestdag(en) gesloten
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>    
+        </div>
+
+        <!-- Warning Modal -->
+        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div id="waarschuwingModalLabel"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" id="waarschuwingModalBody"></div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="page-footer font-small darken-3 pt-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-md-0 mb-3 text-md-right">
+                    <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
+                    <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
+                    <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
+                    <p><a href="producten.html?catid=3">Koude Schotels</a></p>
+                    <p><a href="producten.html?catid=4">Drankjes</a></p>
+                </div>
+                
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
+                    <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
+                    <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
+                    <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
+                    <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-4 mb-md-0 mb-3 text-md-left">
+                    <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
+                    <p><i class="fas fa-envelope mr-3"></i>hbhbroodjeszaak@gmail.com</p>
+                    <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
+                    <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+            <a href="index.html"> HBH Broodjeszaak</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

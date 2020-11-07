@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>HBH Broodjeszaak</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" type ="text/css" href="bz.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="bzscript.js"></script>
+    </head>
+
+    <body onload="haalWinkelwagentjeOp(); krijg_naam()">
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark" >
+                <a class="navbar-brand" href="index.html">
+                    <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Welkom</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="login" href="aanmelden.html">Aanmelden</a>
+                        </li>
+                        <li class="nav-item dropdown" id="gebruikersnaam"></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="promoties.html">Promoties</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <span id="antaal_producten" style="color: white;"></span>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="row row-cols-md-2 d-flex justify-content-center m-0 pt-5 px-2">
+            
+                <div class="jumbotron text-center hoverable p-2 z-depth-5">
+
+                    <div class="row">
+
+                        <div class="col-md-5 m-lg-3">
+
+                            <div class="view overlay">
+                                <img src="logo_3.png" class="img-fluid" alt="Logo">
+                            </div>
+                    
+                        </div>
+
+                        <div class="col-md-5 text-md-left m-lg-3">
+                            <h5 class="pink-text pb-2 pt-1 text-center"><i class="fas fa-utensils pr-2"aria-hidden="true"></i>HBH Broodjes</h5>
+                            <h4 class="h4 mb-4">Waarom online kopen?</h4>
+                            <p class="font-weight-normal text-justify">Onze webshop biedt de beste broodjes die door ons vers worden bereid.
+                                We bieden verschillende soorten beleg bij elke broodsoort om de smaakpapillen te bevredigen van iedereen die in onze winkel koopt. We bieden ook verschillende koude schotels aan. Kwaliteit staat bij ons voorop .</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="carousel-example-2" class="carousel slide carousel-fade row-cols-md-2 d-flex justify-content-center p-2" data-ride="carousel">
+
+                <ol class="carousel-indicators mw-100">
+                    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="4"></li>
+                </ol>
+
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="carousel-item active">
+                        <a href="producten.html?catid=">
+                            <div class="view">
+                                <img class="d-block w-100" src="producten.png" alt="First slide">
+                                <div class="mask rgba-black-light"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <button class="h3-responsive">Alle Producten</button>
+                                <p>Al onze producten zijn huisgemaakt en supergezond.</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <a href="producten.html?catid=1">
+                            <div class="view">
+                                <img class="d-block w-100 imgcarousel" src="klassieke.jpg" alt="Second slide">
+                                <div class="mask rgba-black-light"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <button class="h3-responsive">Klassieke broodjes</button>
+                                <p>De klassieke smaken die u mist, wachten hier op u bij onze klassieke broodjes.</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <a href="producten.html?catid=2">
+                            <div class="view">
+                                <img class="d-block w-100" src="speciale.jpg" alt="Third slide">
+                                <div class="mask rgba-black-light"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <button class="h3-responsive">Speciale broodjes</button>
+                                <p>Bijzondere smaken die u nog niet eerder geproefd heeft, wachten hier op u bij onze speciale broodjes.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="carousel-item">
+                        <a href="producten.html?catid=3">
+                            <div class="view">
+                                <img class="d-block w-100" src="koudeschotel.jpg" alt="Fourth slide">
+                                <div class="mask rgba-black-light"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <button class="h3-responsive">Koude schotels</button>
+                                <p>Heerlijke koude schotels, wachten hier op u bij onze Koude schotels.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="carousel-item">
+                        <a href="producten.html?catid=4">
+                            
+                            <div class="view">
+                                <img class="d-block w-100" src="drankjes.jpg" alt="Fifth slide">
+                                <div class="mask rgba-black-light"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <button class="h3-responsive">Drankjes</button>
+                                <p>Onze rijke selectie dranken lest zeker de dorst</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+            
+                </div>
+            </div>
+            
+        </main>
+
+        <footer class="page-footer font-small darken-3 pt-4">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4 mb-md-0 mb-3 text-md-right">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
+                        <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
+                        <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
+                        <p><a href="producten.html?catid=3">Koude Schotels</a></p>
+                        <p><a href="producten.html?catid=4">Drankjes</a></p>
+                    </div>
+                    
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <div class="col-md-4 mb-md-0 mb-3">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
+                        <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
+                    </div>
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <div class="col-md-4 mb-md-0 mb-3 text-md-left">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
+                        <p><i class="fas fa-envelope mr-3"></i>info@hbhbroodjes.be</p>
+                        <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
+                        <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+                <a href="index.html"> HBH Broodjeszaak</a>
+            </div>
+        </footer>
+    </body>
+
+</html>
+
