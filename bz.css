@@ -1,0 +1,21 @@
+main{
+  background-color: wheat;
+}
+
+.admin_index{
+  background-image: url("tool.jpg");
+  background-repeat: repeat-x;
+}
+
+nav {
+  background-color:  #0f7b47;
+}
+
+footer {
+  background-color:  #0f7b47;
+}
+
+.h3-responsive{
+  background-color: wheat;
+}
+
