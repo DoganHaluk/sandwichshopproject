@@ -1,310 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>HBH Broodjeszak - Winkelwagentje</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" type ="text/css" href="Harikastartpagina.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="bzscript.js"></script>
-</head>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>HBH Broodjeszaak - Winkelwagentje</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" type ="text/css" href="bz.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="bzscript.js"></script>
+    </head>
 
-<body onload="toon_winkel_wagentje(); krijg_naam()">
-    <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" >
-            <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
-            </a>
+    <body onload="toon_winkel_wagentje(); krijg_naam()">
+        <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark" >
+                <a class="navbar-brand" href="index.html">
+                    <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Welkom</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="login" href="aanmelden.html">Aanmelden</a>
+                        </li>
+                        <li class="nav-item dropdown" id="gebruikersnaam"></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="promoties.html">Promoties</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <span id="antaal_producten" style="color: white;"></span>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </header>
+
+        <main>
             
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Welkom</a>
-                        <!--<span id="gebruikernaam" style="color: white;"></span>-->
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="login" href="aanmelden.html">Aanmelden</a>
-                    </li>
-                    <li class="nav-item dropdown" id="gebruikersnaam"></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="promoties.html">Promoties</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i><span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <span id="antaal_producten" style="color: white;"></span>
-                    </li>
-                </ul>
-                
+            <div class="row justify-content-center m-0">
+                <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white"><h4><strong>WINKELWAGENTJE</strong></h4></button>
             </div>
-        </nav>
-    </header>
+            
+            <div class="container p-5">
+                <section class="dark-grey-text z-depth-5">
+            
+                    <div class="card">
+                        <div class="card-body">
 
-    <main>
-        
-        <div class="row justify-content-center m-0">
-            <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white"><h4><strong>WINKELWAGENTJE</strong></h4></button>
-        </div>
-        
-        <div class="container p-5">
+                            <div class="col-lg-12">
 
-            <section class="dark-grey-text z-depth-5">
-          
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="col-lg-12">
-
-                            <ul class="nav md-pills nav-justified pills-primary font-weight-bold">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-dark" id= "uw_bestelling" data-toggle="tab" href="#tabCheckoutOrder" role="tab">1. Uw bestelling</a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <!--<a class="nav-link text-dark" data-toggle="tab" href="#tabCheckoutPayment" role="tab" onclick="winkel_samenvatting()">2. Uw betaling</a>-->
-                                    <a class="nav-link text-dark" id="uw_betaling" data-toggle="tab" href="#tabCheckoutPayment" role="tab" onclick="winkel_samenvatting()">2. Uw betaling</a>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content pt-4">
-        
-                                <!--Panel 1-->
-                                <div class="tab-pane fade in show active" id="tabCheckoutOrder" role="tabpanel">
-
-                                    <section class="dark-grey-text">
-
-                                        <div class="table-responsive">
+                                <ul class="nav md-pills nav-justified pills-primary font-weight-bold">
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-dark" id= "uw_bestelling" data-toggle="tab" href="#tabCheckoutOrder" role="tab">1. Uw bestelling</a>
+                                    </li>
                                     
-                                            <table class="table product-table mb-0">
-                                    
-                                            <!-- Table head -->
-                                            <thead class="mdb-color lighten-5">
-                                                <tr>
-                                                
-                                                    <th class="font-weight-bold">
-                                                        <strong>Product</strong>
-                                                    </th>
-                                                    
-                                                    <th class="font-weight-bold text-center">
-                                                        <strong>Broodsoort</strong>
-                                                    </th>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" id="uw_betaling" data-toggle="tab" href="#tabCheckoutPayment" role="tab" onclick="winkel_samenvatting()">2. Uw betaling</a>
+                                    </li>
+                                </ul>
 
-                                                    <th class="font-weight-bold text-center">
-                                                        <strong>Broodtype</strong>
-                                                    </th>
+                                <div class="tab-content pt-4">
+            
+                                    <!--Panel 1-->
+                                    <div class="tab-pane fade in show active" id="tabCheckoutOrder" role="tabpanel">
+                                        <section class="dark-grey-text">
+                                            <div class="table-responsive">
+                                                <table class="table product-table mb-0">
 
-                                                    <th class="font-weight-bold text-center">
-                                                        <strong>Aantal Stuks</strong>
-                                                    </th>
+                                                    <thead class="mdb-color lighten-5">
+                                                        <tr>
+                                                            <th class="font-weight-bold">
+                                                                <strong>Product</strong>
+                                                            </th>
+                                                            <th class="font-weight-bold text-center">
+                                                                <strong>Broodsoort</strong>
+                                                            </th>
+                                                            <th class="font-weight-bold text-center">
+                                                                <strong>Broodtype</strong>
+                                                            </th>
+                                                            <th class="font-weight-bold text-center">
+                                                                <strong>Aantal Stuks</strong>
+                                                            </th>
+                                                            <th class="font-weight-bold text-center">
+                                                                <strong>Bedrag</strong>
+                                                            </th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
 
-                                                    <th class="font-weight-bold text-center">
-                                                        <strong>Bedrag</strong>
-                                                    </th>
+                                                    <tbody id="winkeltablebody"></tbody>
 
-                                                    <th></th>
-
-                                                </tr>
-                                            </thead>
-                                            <!-- /.Table head -->
-                                    
-                                            <!-- Table body -->
-                                            <tbody id="winkeltablebody"></tbody>
-                                           <!-- 
-                                             /.Table body -->
-                                            </table>
+                                                </table>
+                                            </div>
+                                        </section>
                                     </div>
-                                    
-                                    </section>
-                                </div>
-                                <!--/.Panel 1-->
-                
-                                <!--Panel 2-->
-                                <div class="tab-pane fade" id="tabCheckoutPayment" role="tabpanel">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <div class="d-block m-4">
-                                                <div class="mb-2">
-                                                    <input name="common" type="radio" class="form-check-input with-gap" id="radioCredit" checked required>
-                                                    <span class="image-payment"><img class="border border-cyan px-1" src="creditcard_xpay.webp"></span>
-                                                    <label class="form-check-label" for="radioCredit">Kredietkaart</label>
+
+                                    <!--Panel 2-->
+                                    <div class="tab-pane fade" id="tabCheckoutPayment" role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="d-block m-4">
+                                                    <div class="mb-2">
+                                                        <input name="common" type="radio" class="form-check-input with-gap" id="radioCredit" checked required>
+                                                        <span class="image-payment"><img class="border border-cyan px-1" src="creditcard_xpay.webp"></span>
+                                                        <label class="form-check-label" for="radioCredit">Kredietkaart</label>
+                                                    </div>
+
+                                                    <div class="mb-2">
+                                                        <input name="common" type="radio" class="form-check-input with-gap" id="radioContact" required>
+                                                        <span class="image-payment"><img class="border border-cyan px-1" src="directdebit_bancontact_xpay.webp"></span>
+                                                        <label class="form-check-label" for="radioContact">Bancontact</label>
+                                                    </div>
+
+                                                    <div class="mb-2">
+                                                        <input name="common" type="radio" class="form-check-input with-gap" id="radioPaypal" required>
+                                                        <span class="image-payment"><img class="border border-cyan px-1" src="paypal_xpay.webp"></span>
+                                                        <label class="form-check-label" for="radioPaypal">PayPal</label>
+                                                    </div>
                                                 </div>
 
-                                                <div class="mb-2">
-                                                    <input name="common" type="radio" class="form-check-input with-gap" id="radioContact" required>
-                                                    <span class="image-payment"><img class="border border-cyan px-1" src="directdebit_bancontact_xpay.webp"></span>
-                                                    <label class="form-check-label" for="radioContact">Bancontact</label>
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="cc-name123">Naam op de kaart</label>
+                                                        <input type="text" class="form-control" id="cc-name123" placeholder="" required>
+                                                        <small class="text-muted">Volledige naam zoals weergegeven op kaart</small>
+                                                        <div class="invalid-feedback">Naam op kaart is vereist</div>
+                                                    </div>
+
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="cc-number123">Kredietkaart nummer</label>
+                                                        <input type="text" class="form-control" id="cc-number123" placeholder="" required>
+                                                        <div class="invalid-feedback">Kredietkaart nummer is vereist</div>
+                                                    </div>
                                                 </div>
 
-                                                <div class="mb-2">
-                                                    <input name="common" type="radio" class="form-check-input with-gap" id="radioPaypal" required>
-                                                    <span class="image-payment"><img class="border border-cyan px-1" src="paypal_xpay.webp"></span>
-                                                    <label class="form-check-label" for="radioPaypal">PayPal</label>
+                                                <div class="row">
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="cc-expiration123">Vervaldatum</label>
+                                                        <input type="text" class="form-control" id="cc-expiration123" placeholder="" required>
+                                                        <div class="invalid-feedback">Vervaldatum is vereist</div>
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="cc-cvv123">CSC-code</label>
+                                                        <input type="text" class="form-control" id="cc-cvv123" placeholder="" required>
+                                                        <div class="invalid-feedback">Beveiligingscode is vereist</div>
+                                                    </div>
                                                 </div>
+                                                <hr class="mb-4">
+                                                <button class="btn btn-cyan btn-lg btn-block" id="plaats_bestelling" type="submit" onclick="post_in_producten_bestelling_tabel()">Betaal Bestelling</button>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="cc-name123">Naam op de kaart</label>
-                                                    <input type="text" class="form-control" id="cc-name123" placeholder="" required>
-                                                    <small class="text-muted">Volledige naam zoals weergegeven op kaart</small>
-                                                    <div class="invalid-feedback">Naam op kaart is vereist</div>
-                                                </div>
-
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="cc-number123">Kredietkaart nummer</label>
-                                                    <input type="text" class="form-control" id="cc-number123" placeholder="" required>
-                                                    <div class="invalid-feedback">Kredietkaart nummer is vereist</div>
+                                            <div class="col-lg-4 mb-4">
+                                                <div class="card z-depth-0 border border-light rounded-0">
+                                                    <div class="table-responsive">         
+                                                        <table class="table product-table mb-0">                  
+                                                            <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Samenvatting</h4>
+                                                            <tbody id="winkelsamenvatting"></tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3 mb-3">
-                                                    <label for="cc-expiration123">Vervaldatum</label>
-                                                    <input type="text" class="form-control" id="cc-expiration123" placeholder="" required>
-                                                    <div class="invalid-feedback">Vervaldatum is vereist</div>
-                                                </div>
-
-                                                <div class="col-md-3 mb-3">
-                                                    <label for="cc-cvv123">CSC-code</label>
-                                                    <input type="text" class="form-control" id="cc-cvv123" placeholder="" required>
-                                                    <div class="invalid-feedback">Beveiligingscode is vereist</div>
-                                                </div>
-                                            </div>
-                                            <hr class="mb-4">
-                                            <button class="btn btn-cyan btn-lg btn-block" id="plaats_bestelling" type="submit" onclick="post_in_producten_bestelling_tabel()">Betaal Bestelling</button>
-                                        </div>
-
-                                        <div class="col-lg-4 mb-4">
-                                            <!--Card-->
-                                            <div class="card z-depth-0 border border-light rounded-0">
-                                                <!--Card content-->
-                                                <div class="table-responsive">
-                                    
-                                                    <table class="table product-table mb-0">
-                                                    
-                                                        <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Samenvatting</h4>
-
-                                                        <tbody id="winkelsamenvatting"></tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <!--/.Card-->
                                         </div>
                                     </div>
-                                </div>
-                                <!--/.Panel 2-->
-                            </div>   
+
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Warning Modal -->
+            <div class="modal fade" id="waarschuwingModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div id="waarschuwingModalLabel1"></div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body" id="waarschuwingModalBody1"></div>
+                            <div class="modal-footer" id="waarschuwingModalFooter1">
+                            <button type="button" id="warning_button" class="btn btn-cyan" data-dismiss="modal" onclick="ga_naar_login()">Sluit</button>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-
-        <!-- Warning Modal -->
-        <div class="modal fade" id="waarschuwingModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div id="waarschuwingModalLabel1"></div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            </div>
+            <div class="modal fade" id="waarschuwingModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div id="waarschuwingModalLabel2"></div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body" id="waarschuwingModalBody2"></div>
+                            <div class="modal-footer" id="waarschuwingModalFooter2">
+                            <button type="button" id="warning_button2" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
                         </div>
-                        <div class="modal-body" id="waarschuwingModalBody1"></div>
-                        <div class="modal-footer" id="waarschuwingModalFooter1">
-                        <button type="button" id="warning_button" class="btn btn-cyan" data-dismiss="modal" onclick="ga_naar_login()">Sluit</button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal fade" id="waarschuwingModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div id="waarschuwingModalLabel2"></div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body" id="waarschuwingModalBody2"></div>
-                        <div class="modal-footer" id="waarschuwingModalFooter2">
-                        <button type="button" id="warning_button2" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
+            
+        </main>
+
+        <footer class="page-footer font-small darken-3 pt-4">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4 mb-md-0 mb-3 text-md-right">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
+                        <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
+                        <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
+                        <p><a href="producten.html?catid=3">Koude Schotels</a></p>
+                        <p><a href="producten.html?catid=4">Drankjes</a></p>
                     </div>
+                    
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <div class="col-md-4 mb-md-0 mb-3">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
+                        <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
+                    </div>
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <div class="col-md-4 mb-md-0 mb-3 text-md-left">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
+                        <p><i class="fas fa-envelope mr-3"></i>hbhbroodjeszaak@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
+                        <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-        
-    </main>
 
-    <footer class="page-footer font-small darken-3 pt-4">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-4 mb-md-0 mb-3 text-md-right">
-                    <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
-                    <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
-                    <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
-                    <p><a href="producten.html?catid=3">Koude Schotels</a></p>
-                    <p><a href="producten.html?catid=4">Drankjes</a></p>
-                </div>
-                
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <div class="col-md-4 mb-md-0 mb-3">
-                    <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
-                    <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
-                    <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
-                    <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
-                    <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
-                </div>
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <div class="col-md-4 mb-md-0 mb-3 text-md-left">
-                    <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
-                    <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
-                    <p><i class="fas fa-envelope mr-3"></i>info@hbhbroodjes.be</p>
-                    <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
-                    <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
-                </div>
-                
+            <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+                <a href="index.html"> HBH Broodjeszaak</a>
             </div>
-        </div>
+        </footer>
 
-        <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
-            <a href="index.html"> HBH Broodjeszaak</a>
-        </div>
-    </footer>
-
-</body>
+    </body>
 
 </html>
