@@ -366,20 +366,21 @@ function inloggen() {
 
 function vergetenWachtwoord()
 {   
-    useremail = document.getElementById("vergetenWachtwoord").value;
+    var useremail = document.getElementById("vergetenWachtwoord").value;
+    
     $.ajax
     ({
         method: 'GET',
         url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=user&token_required=false",
         data:
         {
-            "filter": ["email", "like", "%" + useremail + "%"]
+            "filter": ["email", "=",  useremail]
         }
     })
     .done(function (response) {
         console.log(response);
         userdata=response.data.items;
-
+        console.log(userdata);
         if (userdata=="")
         {
             waarschuwing_modal("noemail");
@@ -403,7 +404,7 @@ function vergetenWachtwoord()
     .fail(function (msg) {
         console.log("read fail:");
         console.log(msg);
-    });
+    });    
 }
 
 
