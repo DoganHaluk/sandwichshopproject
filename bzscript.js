@@ -431,7 +431,7 @@ function krijg_naam()
         toon_gebruiker_naam(); 
     })
     .fail(function (msg) {
-        console.log("read fail:");
+        console.log("not logged in yet");
         console.log(msg);
     });
 }
@@ -497,13 +497,7 @@ function start()
     const urlParams = new URLSearchParams(window.location.search);
     const catid = urlParams.get("catid");
 
-    console.log(gebruikersnaam);
     console.log(sessionStorage);
-    
-    /*if(catid!="")
-    {
-        filter_producten_category(catid); 
-    }*/
 
     if (catid==1)
     {
@@ -545,8 +539,7 @@ function filter_producten_category(catid)
     {
         console.log(response);
         broodsoort = response.data.items
-        console.log(broodsoort);
-        
+
         $.ajax
         ({
             method: 'GET',
@@ -557,7 +550,6 @@ function filter_producten_category(catid)
         {
             console.log(response);
             broodtype = response.data.items
-            console.log(broodtype);
                 
             $.ajax
             ({
@@ -570,13 +562,9 @@ function filter_producten_category(catid)
             })
             .done(function (json) 
             {
-                console.log("read done:");
                 console.log(json);
-
                 assets_path = json.data.assets_path;
                 producten=json.data.items;
-
-                console.log(producten);
 
                 if(producten=="")
                 {
@@ -699,12 +687,8 @@ function product_gevonden(pid)
 
 function create_modal(catid,pid,prodprijs)
 {
-    
-
     if(catid==1 || catid==2)
     {
-        console.log(broodsoort)
-        
         document.getElementById("modal_data").innerHTML=
         ` 
         <div class="modal fade" id="broodjesZaak_details" tabindex="-1" role="dialog" aria-labelledby="modalform" aria-hidden="true">
@@ -985,8 +969,8 @@ function get_radio_button_value(price, bst, catid, id, naam)
         smos_gekozen=price;
         smos_gekozen_id=id;
         smos_gekozen_naam=naam;
-        console.log(smos_gekozen_naam);
         console.log("smos_gekozen_id via radio button:",smos_gekozen_id);
+        console.log(smos_gekozen_naam);
     }
     berekening(catid);
     update_modal(catid);
@@ -995,9 +979,9 @@ function get_radio_button_value(price, bst, catid, id, naam)
 
 function haalWinkelwagentjeOp() 
 {   
-    toon_aantal_bestellingen();            
+    toon_aantal_bestellingen();
     
-    var winkelwagentje = JSON.parse(sessionStorage.getItem("winkelwagentje"));    
+    var winkelwagentje = JSON.parse(sessionStorage.getItem("winkelwagentje"));
     
     if (winkelwagentje == null) 
     {
@@ -1020,11 +1004,9 @@ function toon_aantal_bestellingen()
 function bevestig_bestelling(pid,catid)
 { 
     var winkelwagentje=haalWinkelwagentjeOp();
-    console.log(catid);
     var product_id=pid;
     var product_naam=huidig_product.pnaam;
     var product_gekozen_prijs=huidig_product.prodprijs;
-    console.log("product_id:",product_id);
     var aantal_quantity=document.getElementById("quantity").value;
     var bedrag=document.getElementById("prijs").value;
     var cid=huidig_product.catid;
@@ -1047,8 +1029,8 @@ function bevestig_bestelling(pid,catid)
             "snaam": smos_gekozen_naam,
             "smprice": smos_gekozen,
             "dag": korting_day,
-            "totaal_stuks": aantal_quantity, 
-            "totaal_bedrag":  bedrag 
+            "totaal_stuks": aantal_quantity,
+            "totaal_bedrag": bedrag
         };
         console.log(winkel_data);
     }
@@ -1092,7 +1074,6 @@ function bevestig_bestelling(pid,catid)
 
 function toon_winkel_wagentje()
 {
-
     document.getElementById("uw_bestelling").style.background="cyan";
     document.getElementById("uw_betaling").style.background="";
 
