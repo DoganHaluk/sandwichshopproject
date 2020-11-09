@@ -844,7 +844,7 @@ function berekening(catid)
 {
     if(catid==1 || catid==2)
     {   
-        total_prijs= Number(broodsoort_gekozen) + Number(broodtype_gekozen) + Number(smos_gekozen)+Number(huidig_product.prodprijs);
+        total_prijs= Number(broodsoort_gekozen) + Number(broodtype_gekozen) + Number(smos_gekozen) + Number(huidig_product.prodprijs);
         
         var aantalstukjes = Number(document.getElementById("quantity").value);
         
@@ -883,18 +883,18 @@ function update_modal(catid)
     if(catid==1 || catid==2)
     {
         /* sunday=0, monday=1, tuesday=2, wednesday=3, thursday=4, friday=5, saturday=6 */
-        if(day===5 && catid==1)
+        if(day==5 && catid==1)
         {
             document.getElementById("promotieid").value="5% korting op alle Klassieke Broodjes vandaag (vrijdag)";
             document.getElementById("totaalprijsspan").innerHTML= "&nbsp" + "<b>"+"Total Prijs voor Korting:"+ "&nbsp" +"€"+ voor_korting_prijs+ "</b>";
 
             console.log("total_prijs after discount", total_prijs);
         }
-        else if(catid==1 && day!=5)
+        else if(day!=5 && catid==1)
         {
             document.getElementById("promotieid").value="5% korting op alle Klassieke Broodjes elke vrijdag";
         }
-        else if(day===2 && catid==2)
+        else if(day==2 && catid==2)
         {
             document.getElementById("promotieid").value="10% korting op alle Speciale Broodjes vandaag (dinsdag)";
             document.getElementById("totaalprijsspan").innerHTML= "&nbsp" + "<b>"+"Total Prijs voor Korting:"+ "&nbsp" +"€"+ voor_korting_prijs+ "</b>";
@@ -909,14 +909,14 @@ function update_modal(catid)
     }
     else if(catid!=1 || catid!=2)
     {
-        if(catid==3 && day==1)
+        if(day==1 && catid==3)
         {
             document.getElementById("promotieid").value="20% korting op alle koude schotels vandaag (maandag)";
             document.getElementById("totaalprijsspan").innerHTML= "&nbsp" + "<b>"+"Total Prijs voor Korting:"+ "&nbsp" +"€"+ voor_korting_prijs+ "</b>";
 
             console.log("total_prijs after discount", total_prijs);
         }
-        else if(catid==3 && day!=1)
+        else if(day!=1 && catid==3)
         {
             document.getElementById("promotieid").value="20% korting op alle koude schotels elke maandag";
         }
@@ -927,7 +927,6 @@ function update_modal(catid)
         }
         document.getElementById("prijs").value = total_prijs;
     }
-   
 }
 
 
@@ -943,7 +942,7 @@ function aantal_kiezen(pid, catid)
         berekening(catid);
         update_modal(catid);
     }
-}               
+}
 
 
 function get_radio_button_value(price, bst, catid, id, naam)
