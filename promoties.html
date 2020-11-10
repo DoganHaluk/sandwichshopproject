@@ -1,213 +1,188 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>HBH Broodjeszaak - Promoties</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="bz.css" />
-    <script src="bzscript_promotie.js"></script>
-    <script src="bzscript.js"></script>
-  </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>HBH Broodjeszaak</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" type ="text/css" href="bz.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="bzscript.js"></script>
+    </head>
 
-  <body onload="begint(); haalWinkelwagentjeOp(); krijg_naam()">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="index.html">
-          <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px"alt="Responsive image">
-        </a>
+    <body onload="haalWinkelwagentjeOp(); krijg_naam()">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark" >
+                <a class="navbar-brand" href="index.html">
+                    <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Welkom</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="login" href="aanmelden.html">Aanmelden</a>
-            </li>
-            <li class="nav-item dropdown" id="gebruikersnaam"></li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="promoties.html">Promoties<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </li>
-            <li class="nav-item">
-              <span id="antaal_producten" style="color: white;"></span>
-            </li>
-          </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Welkom</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="login" href="aanmelden.html">Aanmelden</a>
+                        </li>
+                        <li class="nav-item dropdown" id="gebruikersnaam"></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="promoties.html">Promoties<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="badge badge-default badge-pill" id="antaal_producten" style="color: white;"></span>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </header>
 
-        </div>
-      </nav>
-    </header>
-    
-    <main>
+        <main>
+            <div class="row justify-content-center m-0">
+                <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white"><h4><strong>PROMOTIES</strong></h4></button>
+            </div>
 
-      <section class="container">
+            <div class="row p-5 m-0">
 
-        <style>
-          .gallery {
-            -webkit-column-count: 3;
-            -moz-column-count: 3;
-            column-count: 3;
-            -webkit-column-width: 33%;
-            -moz-column-width: 33%;
-            column-width: 33%;
-          }
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <a href="producten.html?catid=2"><h3 style="color: black;">Speciale Broodjes</h3></a>
+                        <div class="view zoom overlay z-depth-5 rounded">
+                            <img class="img-fluid w-100" src="speciale.jpg" alt="Sample">
+                            <a href="producten.html?catid=2">
+                                <div class="mask">
+                                    <img class="img-fluid w-100" src="korting.jpg">
+                                    <div class="mask rgba-black-slight"></div>
+                                </div>
+                            </a>
+                        </div>
+                
+                        <div class="text-center pt-5">
+                            <p class="mb-2 text-muted text-uppercase small">10% Korting op alle Special Broodjes : Elke Dinsdag!</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+            
+                <!-- Grid column -->
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <a href="producten.html?catid=3"><h3 style="color: black;">Koude Schotels</h3></a>
+                        <div class="view zoom overlay z-depth-5 rounded">
+                            <img class="img-fluid w-100" src="koudeschotel.jpg" alt="Sample">
+                            <a href="producten.html?catid=3">
+                                <div class="mask">
+                                    <img class="img-fluid w-100" src="korting.jpg">
+                                    <div class="mask rgba-black-slight"></div>
+                                </div>
+                            </a>
+                        </div>
+                
+                        <div class="text-center pt-5">
+                            <p class="mb-2 text-muted text-uppercase small">20% Korting op alle Koude Schotels : Elke Maandag!</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+            
+                <!-- Grid column -->
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <a href="producten.html?catid=1"><h3 style="color: black;">Klassieke Broodjes</h3></a>
+                        <div class="view zoom overlay z-depth-5 rounded">
+                            <img class="img-fluid w-100" src="klassieke.jpg" alt="Sample">
+                            <h2 class="mb-0"><span class="badge badge-pill animated tada infinite" style="position: absolute; top: 40%; left: 30%;  background: rgba(0, 0, 0, 0.5);">Vandaag!</span></h2>
+                            <a href="producten.html?catid=1">
+                                <div class="mask">
+                                    <img class="img-fluid w-100" src="korting.jpg">
+                                    <div class="mask rgba-black-slight"></div>
+                                </div>
+                            </a>
+                        </div>
+                
+                        <div class="text-center pt-5">
+                            <p class="mb-2 text-muted text-uppercase small">5% Korting op alle Klassieke Broodjes : Elke Vrijdag!</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+            
+            </div>
+        </main>
 
-          .gallery .pics {
-            -webkit-transition: all 500ms ease;
-            transition: all 500ms ease;
-          }
+        <footer class="page-footer font-small darken-3 pt-4">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4 mb-md-0 mb-3 text-md-right">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
+                        <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
+                        <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
+                        <p><a href="producten.html?catid=3">Koude Schotels</a></p>
+                        <p><a href="producten.html?catid=4">Drankjes</a></p>
+                    </div>
+                    
+                    <hr class="clearfix w-100 d-md-none pb-3">
 
-          .gallery .animation {
-            -webkit-transform: scale(1);
-            -ms-transform: scale(1);
-            transform: scale(1);
-          }
+                    <div class="col-md-4 mb-md-0 mb-3">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
+                        <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
+                        <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
+                    </div>
 
-          @media (max-width: 450px) {
-            .gallery {
-              -webkit-column-count: 1;
-              -moz-column-count: 1;
-              column-count: 1;
-              -webkit-column-width: 100%;
-              -moz-column-width: 100%;
-              column-width: 100%;
-            }
-          }
+                    <hr class="clearfix w-100 d-md-none pb-3">
 
-          @media (max-width: 400px) {
-            .btn.filter {
-              padding-left: 1.1rem;
-              padding-right: 1.1rem;
-            }
-          }
+                    <div class="col-md-4 mb-md-0 mb-3 text-md-left">
+                        <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
+                        <p><i class="fas fa-envelope mr-3"></i>hbhbroodjeszaak@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
+                        <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
+                    </div>
+                    
+                </div>
+            </div>
 
-          button.close {
-            position: absolute;
-            right: 0;
-            z-index: 2;
-            padding-right: 1rem;
-            padding-top: .8rem;
-          }
-
-          .coupon {
-            border: 4px dotted #bbb;
-            width: 80%;
-            border-radius: 10px;
-            margin: 10 auto;
-            max-width: auto;
-          }
-
-          .container3 {
-            padding: 2px;
-            background-color: #bbb;
-
-          }
-
-          .promo {
-            background: #ccc;
-            padding: 3px;
-          }
-
-          .expire {
-            color: red;
-          }
-        </style>
-
-        <div class="row justify-content-center m-0">
-          <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white">
-            <h4><strong>PROMOTIES</strong></h4>
-          </button>
-        </div><br>
-
-        <div class="row"></div>
-
-        <div class="gallery mb-5" id="gallery">
-          <div class="mb-1 pics animation all 2" data-toggle="modal" data-target="#basicExampleModal">
-            <div id="promotie_categorie"></div>
-          </div>
-        </div>
-
-        <div class="gallery" id="gallery">
-          <div class="mb-1 pics animation all 1" data-toggle="modal" data-target="#basicExampleModal">
-            <div id="promotie_categorie"></div>
-          </div>
-        </div>
-
-      </section>
-
-    </main>
-
-    <footer class="page-footer font-small darken-3 pt-4">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-md-4 mb-md-0 mb-3 text-md-right">
-            <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
-            <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
-            <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
-            <p><a href="producten.html?catid=3">Koude Schotels</a></p>
-            <p><a href="producten.html?catid=4">Drankjes</a></p>
-          </div>
-
-          <hr class="clearfix w-100 d-md-none pb-3">
-
-          <div class="col-md-4 mb-md-0 mb-3">
-            <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
-            <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
-            <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
-            <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
-            <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
-          </div>
-
-          <hr class="clearfix w-100 d-md-none pb-3">
-
-          <div class="col-md-4 mb-md-0 mb-3 text-md-left">
-            <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
-            <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
-            <p><i class="fas fa-envelope mr-3"></i>hbhbroodjeszaak@gmail.com</p>
-            <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
-            <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
-        <a href="index.html"> HBH Broodjeszaak</a>
-      </div>
-    </footer>
-
-  </body>
+            <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+                <a href="index.html"> HBH Broodjeszaak</a>
+            </div>
+        </footer>
+    </body>
 
 </html>

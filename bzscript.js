@@ -1136,7 +1136,7 @@ function toon_winkel_wagentje()
     }
    
     tabledata1 += ` <tr>
-         <td> </td>
+        <td> </td>
         <td> </td>
         
         <td>
