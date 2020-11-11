@@ -41,6 +41,7 @@ var betaald;
 //var afgehaald;
 //var opgelost;
 var assets_path;
+var promotie;
 
 
 function waarschuwing_modal(warning)
@@ -911,7 +912,7 @@ function update_modal(catid)
     {
         if(day==1 && catid==3)
         {
-            document.getElementById("promotieid").value="20% korting op alle koude schotels vandaag (maandag)";
+            document.getElementById("promotieid").value="20% korting op alle Koude Schotels vandaag (maandag)";
             document.getElementById("totaalprijsspan").innerHTML= "&nbsp" + "<b>"+"Total Prijs voor Korting:"+ "&nbsp" +"€"+ voor_korting_prijs+ "</b>";
 
             console.log("total_prijs after discount", total_prijs);
@@ -1500,5 +1501,69 @@ function show_password(id) {
     } else {
         input.type = "password";
         document.getElementById("eye"+id).className = "far fa-eye-slash";
+    }
+}
+
+function krijg_promoties()
+{
+    $.ajax
+    ({
+        url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=promoties",
+        type: "GET"
+    })
+    .done(function (response) {
+        console.log("read done:");
+        console.log(response);
+        promotie = response.data.items;
+        console.log(promotie);
+        if(promotie == "")
+        {
+            document.getElementById("promotie_categorie").innerHTML = "<br>" + "<br>" + "<center>" + "<b>" + "Geen Records gevonden" + "</b>" + "</center>";
+        }
+        else 
+        {
+            toon_promoties();
+        }
+    })
+    .fail(function (msg) {
+        console.log("read fail:");
+        console.log(msg);
+    });
+}
+
+
+function toon_promoties()
+{
+    var foto1="klassieke.jpg";
+    var foto2="speciale.jpg";
+    var foto3="koudeschotel.jpg";
+
+    for (i=0; i<promotie.length; i++)
+    {
+        document.getElementById("promotie"+i).innerHTML=
+        `<div class="text-center">
+            <a href="producten.html?catid=${promotie[i].catid}"><h3 style="color: black;">${promotie[i].catnaam}</h3></a>
+            <div class="view zoom overlay z-depth-5 rounded">
+                <img class="img-fluid w-100" src="foto${promotie[i].catid}" alt="Sample">
+                <h2 class="mb-0" id="vandaag${i}" style="display:none"><span class="badge badge-pill animated tada infinite" style="position: absolute; top: 40%; left: 30%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.5);">Vandaag!</span></h2>
+                <a href="producten.html?catid=${promotie[i].catid}">
+                    <div class="mask">
+                        <img class="img-fluid w-100" src="20_korting.png">
+                        <div class="mask rgba-black-slight"></div>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="text-center pt-5">
+                <p class="mb-2 text-muted text-uppercase small">${promotie[i].dagen}</p>
+                <hr>
+            </div>
+        </div>`
+
+        var days = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
+        if (days[day]==promotie[i].dag)
+        {
+            document.getElementById("vandaag"+i).style.display = "block";
+        }
     }
 }
