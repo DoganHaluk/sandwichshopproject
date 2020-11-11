@@ -1,15 +1,12 @@
 var producten;
-//var category;
 var broodsoort=[];
 var broodtype=[];
 var huidig_product;
-//var verwijder_huidig_product;
 var date = new Date();
 var date1 = date.getDate();
 var month1 = date.getMonth() + 1;
 var year1 = date.getFullYear();
 var huidig_date=date1 + "/" + month1 + "/" + year1;
-//var huidig_date2=year1 + "/" + month1 + "/" + date1;
 console.log(huidig_date);
 var day=date.getDay();
 console.log(day);
@@ -31,177 +28,16 @@ var voor_korting_prijs;
 var rowid=1;
 var browid=1;
 var final_bedrag=0.0;
-//var userdata;
 var gebruikersnaam;
 var user_id;
-//var telefoonnummer;
 var total_no_of_products;
 var besid;
 var betaald;
-//var afgehaald;
-//var opgelost;
 var assets_path;
 var promotie;
 
 
-function waarschuwing_modal(warning)
-{   
-    $("#waarschuwingModal").modal();
-    var warning;
-
-    if (warning=="success")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie gelukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>U bent succesvol geregistreerd. U kunt nu inloggen.</p>';
-    }
-    else if (warning=="email")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mailadres bestaat al?</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ingevoerde e-mailadres bestaat al. Voer een ander e-mailadres in!</p>';
-    }
-    else if (warning=="fail")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie mislukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw registratie is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
-    }
-    
-    else if (warning=="password")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Wachtwoord of e-mail onjuist?</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ngevoerd e-mailadres of wachtwoord is onjuist. Voer de waarden opnieuw in!</p>';
-    }
-    else if (warning=="unsuccessful")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Aanmelden mislukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw aanmelden is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
-    }
-    else if (warning=="formsuccess")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag verzonden</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is succesvol verzonden. Bedankt!</p>';
-        
-    }
-    else if (warning=="formfail")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag mislukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is om onbekende redenen niet verzonden. Neem dan telefonisch contact met ons op.</p>';
-    }
-    else if (warning=="noemail")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail niet gevonden</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Dit e-mailadres is niet aanwezig in onze database.</p>';
-    }
-    else if (warning=="emailsent")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail verzonden</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>E-mail succesvol verzonden.</p>';
-    }
-}
-
-    
-function get_vraag_selectie_value()
-{
-    var c_option =document.getElementById("contactFormInfo").value;
-    if (c_option==2 || c_option == 3)
-    {
-        document.getElementById("bestellingnummer").innerHTML = `  
-            <input type="text" id="ordernummer" class="form-control mt-4" placeholder="Voer uw bestelnummer in" pattern="[0-9]{1,}" required>      
-        `;
-    }
-    else if (c_option==1)
-    {
-        document.getElementById("bestellingnummer").innerHTML = "";
-    }
-    contactformulier_validatie();
-}
-
-
-function contactformulier_validatie()
-{
-    for (var i=0; i<5; i++)
-    {
-        document.getElementById("formulier_warning_"+i).innerHTML= "";
-    }
-
-    var validate= true;
-    var form = $("#formulierform");
-    $('input', form).each(function(i) {
-        if ($(this)[0].checkValidity() == false) 
-        {
-            document.getElementById("formulier_warning_"+i).innerHTML= '<small class="form-text text-muted mb-4">Gelieve hier geldig in te vullen!</small>'
-            validate= false; 
-        }
-    })
-    if (validate==true)
-    {
-        contactformulier()
-    }
-}
-
-
-function contactformulier() 
-{
-    var formData = new FormData(); 
-    //var datum_bestelling = "";
-    //var contactuserid = "";
-    var contactbestellingid = "";
-    var contactnaam = document.getElementById("contactFormName").value;
-    var contactemail = document.getElementById("contactFormEmail").value;
-    var contacttelefoon = document.getElementById("contactFormTel").value;
-        var c_option =document.getElementById("contactFormInfo").value;
-    if (c_option==2 || c_option == 3)
-    {
-        var contactbestellingid = document.getElementById("ordernummer").value;
-    }
-    var contactomschrijving = document.getElementById("vraag").value;
-    var opgelost=0;
-    
-    var values =  {
-        "naam": contactnaam,
-        "email" : contactemail,
-        "telefoonnummer" :contacttelefoon, 
-        "besid" : contactbestellingid,
-        "omschrijving" :contactomschrijving, 
-        "datum_cf" :date,
-        "opgelost" : String(opgelost)    
-    }
-    formData.set("values", JSON.stringify(values));
-
-    $.ajax
-    ({
-        method: 'POST',
-        url: "https://api.data-web.be/item/create?project=fjgub4eD3ddg&entity=contactformulier&token_required=false",
-        processData: false,
-        contentType: false,
-        data: formData
-   })
-   .done(function (response) 
-   {
-        console.log("post done:");
-        console.log(response);
-        waarschuwing_modal("formsuccess");
-        leeg_contactformulier();
-    })
-    .fail(function (msg) 
-    {
-        console.log("post fail:");
-        console.log(msg);
-        waarschuwing_modal("formfail");
-    });
-}
-
-
-function leeg_contactformulier()
-{
-    document.getElementById("contactFormName").value="";
-    document.getElementById("contactFormEmail").value="";
-    document.getElementById("contactFormTel").value="";
-    document.getElementById("contactFormInfo").value="";
-    document.getElementById("bestellingnummer").innerHTML = "";
-    document.getElementById("vraag").value="";
-}
-
-
+// Customer signup //
 function register_validatie()
 {
     for (var i=0; i<7; i++)
@@ -248,8 +84,10 @@ function registreren() {
     ({
         url: "https://api.data-web.be/user/register?project=fjgub4eD3ddg", 
         method: "POST",
-        data: {
-            "values":{
+        data: 
+        {
+            "values":
+            {
                 "naam" : naam,
                 "email": email,
                 "password": password,
@@ -283,6 +121,27 @@ function registreren() {
 }
 
 
+function show_password(id) {
+    if (id==1)
+    {
+        var input = document.getElementById("login_wachtwoord");
+    } 
+    else if (id==2)
+    {
+        var input = document.getElementById("wachtwoord");
+    }
+    
+    if (input.type === "password") {
+        input.type = "text";
+        document.getElementById("eye"+id).className = "far fa-eye";
+    } else {
+        input.type = "password";
+        document.getElementById("eye"+id).className = "far fa-eye-slash";
+    }
+}
+
+
+// Customer login //
 function login_validatie()
 {
     document.getElementById("login_warning_0").innerHTML= "";
@@ -365,6 +224,15 @@ function inloggen() {
 }
 
 
+function onthouden(){
+    if (localStorage.checkbox == "remember") 
+    {
+        document.getElementById("login_email").value= localStorage.remember_email; 
+        document.getElementById("login_wachtwoord").value= localStorage.remember_password; 
+    }
+}
+
+
 function vergetenWachtwoord()
 {   
     var useremail = document.getElementById("vergetenWachtwoord").value;
@@ -409,6 +277,165 @@ function vergetenWachtwoord()
 }
 
 
+// Contact page //
+function contactformulier_validatie()
+{
+    for (var i=0; i<5; i++)
+    {
+        document.getElementById("formulier_warning_"+i).innerHTML= "";
+    }
+
+    var validate= true;
+    var form = $("#formulierform");
+    $('input', form).each(function(i) {
+        if ($(this)[0].checkValidity() == false) 
+        {
+            document.getElementById("formulier_warning_"+i).innerHTML= '<small class="form-text text-muted mb-4">Gelieve hier geldig in te vullen!</small>'
+            validate= false; 
+        }
+    })
+    if (validate==true)
+    {
+        contactformulier()
+    }
+}
+
+
+function contactformulier() 
+{
+    var formData = new FormData(); 
+
+    var contactbestellingid = "";
+    var contactnaam = document.getElementById("contactFormName").value;
+    var contactemail = document.getElementById("contactFormEmail").value;
+    var contacttelefoon = document.getElementById("contactFormTel").value;
+    var c_option =document.getElementById("contactFormInfo").value;
+    if (c_option==2 || c_option == 3)
+    {
+        var contactbestellingid = document.getElementById("ordernummer").value;
+    }
+    var contactomschrijving = document.getElementById("vraag").value;
+    var opgelost=0;
+    
+    var values =  {
+        "naam": contactnaam,
+        "email" : contactemail,
+        "telefoonnummer" :contacttelefoon, 
+        "besid" : contactbestellingid,
+        "omschrijving" :contactomschrijving, 
+        "datum_cf" :date,
+        "opgelost" : String(opgelost)    
+    }
+    formData.set("values", JSON.stringify(values));
+
+    $.ajax
+    ({
+        method: 'POST',
+        url: "https://api.data-web.be/item/create?project=fjgub4eD3ddg&entity=contactformulier&token_required=false",
+        processData: false,
+        contentType: false,
+        data: formData
+   })
+   .done(function (response) 
+   {
+        console.log("post done:");
+        console.log(response);
+        waarschuwing_modal("formsuccess");
+        leeg_contactformulier();
+    })
+    .fail(function (msg) 
+    {
+        console.log("post fail:");
+        console.log(msg);
+        waarschuwing_modal("formfail");
+    });
+}
+
+
+function get_vraag_selectie_value()
+{
+    var c_option =document.getElementById("contactFormInfo").value;
+    if (c_option==2 || c_option == 3)
+    {
+        document.getElementById("bestellingnummer").innerHTML = 
+            `<input type="text" id="ordernummer" class="form-control mt-4" placeholder="Voer uw bestelnummer in" pattern="[0-9]{1,}" required>`;
+    }
+    else if (c_option==1)
+    {
+        document.getElementById("bestellingnummer").innerHTML = "";
+    }
+    contactformulier_validatie();
+}
+
+
+function leeg_contactformulier()
+{
+    document.getElementById("contactFormName").value="";
+    document.getElementById("contactFormEmail").value="";
+    document.getElementById("contactFormTel").value="";
+    document.getElementById("contactFormInfo").value="";
+    document.getElementById("bestellingnummer").innerHTML = "";
+    document.getElementById("vraag").value="";
+}
+
+
+// Warning popups for signup, login and contact //
+function waarschuwing_modal(warning)
+{   
+    $("#waarschuwingModal").modal();
+    var warning;
+
+    if (warning=="success")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie gelukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>U bent succesvol geregistreerd. U kunt nu inloggen.</p>';
+    }
+    else if (warning=="email")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mailadres bestaat al?</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ingevoerde e-mailadres bestaat al. Voer een ander e-mailadres in!</p>';
+    }
+    else if (warning=="fail")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie mislukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw registratie is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
+    }
+    
+    else if (warning=="password")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Wachtwoord of e-mail onjuist?</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ngevoerd e-mailadres of wachtwoord is onjuist. Voer de waarden opnieuw in!</p>';
+    }
+    else if (warning=="unsuccessful")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Aanmelden mislukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw aanmelden is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
+    }
+    else if (warning=="formsuccess")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag verzonden</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is succesvol verzonden. Bedankt!</p>';
+        
+    }
+    else if (warning=="formfail")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag mislukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is om onbekende redenen niet verzonden. Neem dan telefonisch contact met ons op.</p>';
+    }
+    else if (warning=="noemail")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail niet gevonden</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Dit e-mailadres is niet aanwezig in onze database.</p>';
+    }
+    else if (warning=="emailsent")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail verzonden</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>E-mail succesvol verzonden.</p>';
+    }
+}
+
+
+// Username in the header //
 function krijg_naam()
 {
     var useremail= sessionStorage.getItem("useremail");
@@ -484,15 +511,7 @@ function afmelden()
 }
 
 
-function onthouden(){
-    if (localStorage.checkbox == "remember") 
-    {
-        document.getElementById("login_email").value= localStorage.remember_email; 
-        document.getElementById("login_wachtwoord").value= localStorage.remember_password; 
-    }
-}
-
-
+// Products page //
 function start()
 {   
     const urlParams = new URLSearchParams(window.location.search);
@@ -516,74 +535,8 @@ function start()
     {
         document.getElementById("drankjes").innerHTML=`<a class="btn btn-white btn-outline-default btn-lg z-depth-5"><h4><strong>DRANKJES</strong></h4></a>`;
     }
-
-    filter_producten_category(catid); //else got to alle producten
+    filter_producten_category(catid);
     haalWinkelwagentjeOp();
-}
-
-
-function ga_naar_category(catid)
-{
-    document.location="producten.html?catid=" + catid;
-}
-
-
-function filter_producten_category(catid)
-{
-    $.ajax
-    ({
-        method: 'GET',
-        url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=broodsoort",
-        //headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
-    })
-    .done(function (response) 
-    {
-        console.log(response);
-        broodsoort = response.data.items
-
-        $.ajax
-        ({
-            method: 'GET',
-            url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=broodtype",
-            //headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
-        })
-        .done(function (response) 
-        {
-            console.log(response);
-            broodtype = response.data.items
-                
-            $.ajax
-            ({
-                url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=producten1",
-                //headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
-                type: "GET",
-                data: {
-                    "filter": ["catid", "like", "%" + catid + "%"]
-                }
-            })
-            .done(function (json) 
-            {
-                console.log(json);
-                assets_path = json.data.assets_path;
-                producten=json.data.items;
-
-                if(producten=="")
-                {
-                    document.getElementById("productendata").innerHTML = "<br>" + "<br>" + "<center>" + "<b>" + "Geen Records gevonden" + "</b>" + "</center>";
-                }
-                else 
-                {
-                    maak_tabel(producten/*,broodsoort*/);
-                }                
-            })
-    
-        })
-    })
-    .fail(function (msg) 
-    {
-        console.log("read fail:");
-        console.log(msg); 
-    });
 }
 
 
@@ -609,6 +562,69 @@ function zoek_product()
             }
         }  
     }
+}
+
+
+function ga_naar_category(catid)
+{
+    document.location="producten.html?catid=" + catid;
+}
+
+
+function filter_producten_category(catid)
+{
+    $.ajax
+    ({
+        method: 'GET',
+        url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=broodsoort",
+    })
+    .done(function (response) 
+    {
+        console.log(response);
+        broodsoort = response.data.items
+
+        $.ajax
+        ({
+            method: 'GET',
+            url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=broodtype",
+        })
+        .done(function (response) 
+        {
+            console.log(response);
+            broodtype = response.data.items
+                
+            $.ajax
+            ({
+                url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=producten1",
+                type: "GET",
+                data: 
+                {
+                    "filter": ["catid", "like", "%" + catid + "%"]
+                }
+            })
+            .done(function (json) 
+            {
+                console.log(json);
+                assets_path = json.data.assets_path;
+                producten=json.data.items;
+
+                if(producten=="")
+                {
+                    document.getElementById("productendata").innerHTML = "<br>" + "<br>" + "<center>" + "<b>" + "Geen Records gevonden" + "</b>" + "</center>";
+                }
+                else 
+                {
+                    maak_tabel(producten);
+                }
+            })
+    
+        })
+    })
+    .fail(function (msg) 
+    {
+        console.log("read fail:");
+        console.log(msg); 
+    });
 }
 
 
@@ -654,6 +670,7 @@ function maak_tabel(producten)
 }
 
 
+// Products popup //
 function toon_producten_popup(pid,catid,prodprijs)
 {
     product_gevonden(pid);
@@ -664,15 +681,15 @@ function toon_producten_popup(pid,catid,prodprijs)
         document.getElementById("naam").value = huidig_product.pnaam;
         broodsoort_gekozen = broodsoort[0].bsprijs;
         broodtype_gekozen  = broodtype[0].btprijs;
-        voorberekening(catid);        
+        voorberekening(catid);
     }
     else if(huidig_product.catid!=1 || huidig_product.catid!=2)
     {
         document.getElementById("naam").value = huidig_product.pnaam;
         voorberekening(catid);
     }
-}     
-         
+}
+
 
 function product_gevonden(pid)
 {
@@ -848,11 +865,9 @@ function berekening(catid)
         total_prijs= Number(broodsoort_gekozen) + Number(broodtype_gekozen) + Number(smos_gekozen) + Number(huidig_product.prodprijs);
         
         var aantalstukjes = Number(document.getElementById("quantity").value);
-        
         total_prijs = aantalstukjes * total_prijs;
         voor_korting_prijs=total_prijs.toFixed(2);
 
-        /* sunday=0, monday=1, tuesday=2, wednesday=3, thursday=4, friday=5, saturday=6 */
         if(catid==1 && day===5)
         {
             total_prijs=total_prijs - ((total_prijs*5)/100);
@@ -883,7 +898,6 @@ function update_modal(catid)
 {
     if(catid==1 || catid==2)
     {
-        /* sunday=0, monday=1, tuesday=2, wednesday=3, thursday=4, friday=5, saturday=6 */
         if(day==5 && catid==1)
         {
             document.getElementById("promotieid").value="5% korting op alle Klassieke Broodjes vandaag (vrijdag)";
@@ -921,7 +935,6 @@ function update_modal(catid)
         {
             document.getElementById("promotieid").value="20% korting op alle koude schotels elke maandag";
         }
-        //else if(catid==4)
         else if(catid!=3)
         {
             document.getElementById("promotieid").value="Geen korting";
@@ -977,6 +990,7 @@ function get_radio_button_value(price, bst, catid, id, naam)
 }
 
 
+// Sending products to shopping cart //
 function haalWinkelwagentjeOp() 
 {   
     toon_aantal_bestellingen();
@@ -998,6 +1012,150 @@ function toon_aantal_bestellingen()
     rowid=sessionStorage.getItem('rowid');
     aantaal_bestellingen=sessionStorage.getItem('aantaal_bestellingen');
     document.getElementById("antaal_producten").innerHTML=aantaal_bestellingen;
+}
+
+
+// Shopping cart order //
+function toon_winkel_wagentje()
+{
+    document.getElementById("uw_bestelling").style.background="cyan";
+    document.getElementById("uw_betaling").style.background="";
+
+    var winkelwagentje=haalWinkelwagentjeOp();
+    
+    final_bedrag=0.0;
+    total_no_of_products=0;
+
+    document.getElementById("winkeltablebody").innerHTML="";
+    
+    for(var i=0; i<winkelwagentje.length; i++)
+    {
+        var tabledata ="";
+        var tabledata1=""
+        tabledata += "<tr>";
+
+        if(winkelwagentje[i].snaam!=null)
+        {  
+            tabledata += "<td>" + winkelwagentje[i].pnaam + "<br>"+ winkelwagentje[i].snaam + "</td>";
+        }
+        else
+        {
+            tabledata += "<td>" + winkelwagentje[i].pnaam + "</td>";
+        }
+       
+        if(winkelwagentje[i].bsnaam!=null)
+        {
+           tabledata += "<td>" + winkelwagentje[i].bsnaam + "</td>";
+        }
+        else
+        {
+            tabledata += "<td>" + "---" + "</td>";
+        }
+
+        if(winkelwagentje[i].btnaam!=null)
+        {
+            tabledata += "<td>" + winkelwagentje[i].btnaam + "</td>";
+        }
+        else
+        {
+            tabledata += "<td>"+ "---" + "</td>";
+        }
+
+        tabledata += `<td>
+                     <input type="number" id= "wquantity${winkelwagentje[i].rowid}" min="1" value= ${winkelwagentje[i].totaal_stuks} aria-label="Search" class="form-control" style="width: 100px" onchange="aantal_prijs_wijzigen(${winkelwagentje[i].rowid});">
+                     </td>`;
+
+        tabledata += "<td>" +"€ " + winkelwagentje[i].totaal_bedrag + "</td>";
+        tabledata += "<td>" + `<button type="button" class="btn btn-sm btn-cyan" data-toggle="tooltip" data-placement="top" title="Verwijder item" onclick="verwijder_bestelling(${winkelwagentje[i].rowid})">Verwijder</button>`
+                    "</td>";
+        tabledata += "</tr>";
+       
+        document.getElementById("winkeltablebody").innerHTML += tabledata;
+
+        final_bedrag = Number(final_bedrag) + Number(winkelwagentje[i].totaal_bedrag);
+        final_bedrag = final_bedrag.toFixed(2);
+        total_no_of_products = total_no_of_products + Number(winkelwagentje[i].totaal_stuks);
+        console.log(total_no_of_products);
+    }
+   
+    tabledata1 += ` <tr>
+        <td> </td>
+        <td> </td>
+        
+        <td>
+            <h5 class="mt-2"><strong>Totaal</strong></h5>
+        </td>
+        <td class="text-right" colspan="2">
+            <h5 class="mt-2" id="final_bedrag"><strong> € ${final_bedrag} </strong></h5>
+        </td>
+
+        <td class="text-right">
+        <a type="button" id="ga_naar_betaling" href="#tabCheckoutPayment" data-toggle="tab" class="btn btn-cyan" onclick="sessioncontrol()">Bevestig Bestelling<i class="fas fa-angle-right right"></i></a>
+        </td>
+    </tr>`; 
+    document.getElementById("winkeltablebody").innerHTML += tabledata1;
+}
+
+
+function aantal_prijs_wijzigen(rowid)
+{
+    var winkelwagentje=haalWinkelwagentjeOp();
+    var totaal_bedrag=0;
+   
+    for(var i=0; i<winkelwagentje.length; i++)
+    {
+        if(winkelwagentje[i].rowid==rowid)
+        {
+            var count=document.getElementById("wquantity"+winkelwagentje[i].rowid).value;
+           
+            console.log(count);
+            winkelwagentje[i].totaal_stuks=count;
+            totaal_bedrag = (Number(winkelwagentje[i].pprijs) + Number(winkelwagentje[i].bsprijs) + Number(winkelwagentje[i].btprijs) + Number(winkelwagentje[i].smprice))  * count;
+            
+            if(winkelwagentje[i].catid==1 && winkelwagentje[i].dag==5 )
+            {
+                totaal_bedrag = totaal_bedrag - ((totaal_bedrag * 5)/100);
+                totaal_bedrag = totaal_bedrag.toFixed(2);
+            }
+            else if(winkelwagentje[i].catid==2 && winkelwagentje[i].dag==2)
+            {
+                totaal_bedrag = totaal_bedrag - ((totaal_bedrag * 10)/100);
+                totaal_bedrag = totaal_bedrag.toFixed(2);
+            }
+            else if(winkelwagentje[i].catid==3 && winkelwagentje[i].dag==1)
+            {
+                totaal_bedrag = totaal_bedrag - ((totaal_bedrag * 20)/100);
+                totaal_bedrag = totaal_bedrag.toFixed(2);
+            }
+            winkelwagentje[i].totaal_bedrag =totaal_bedrag;
+            console.log(winkelwagentje[i].totaal_bedrag);
+            console.log(winkelwagentje[i].totaal_stuks);
+        }
+    }
+    sessionStorage.setItem('winkelwagentje', JSON.stringify(winkelwagentje));
+    toon_winkel_wagentje();
+}
+
+
+function verwijder_bestelling(rowid)
+{
+    var winkelwagentje=haalWinkelwagentjeOp();
+    console.log(winkelwagentje);
+    
+    for(var i=0; i<winkelwagentje.length; i++)
+    {
+        if(winkelwagentje[i].rowid==rowid)
+        {
+            final_bedrag=Number(final_bedrag)-Number(winkelwagentje[i].totaal_bedrag);
+            winkelwagentje.splice(i,1);
+        }
+    }
+    console.log("final bedrag in verwijderen:", final_bedrag);
+    console.log(winkelwagentje);
+    aantaal_bestellingen--;
+    sessionStorage.setItem('aantaal_bestellingen', JSON.stringify(aantaal_bestellingen));
+    sessionStorage.setItem('winkelwagentje', JSON.stringify(winkelwagentje));
+    toon_winkel_wagentje();
 }
 
 
@@ -1069,152 +1227,6 @@ function bevestig_bestelling(pid,catid)
     sessionStorage.setItem('winkelwagentje', JSON.stringify(winkelwagentje));
     toon_aantal_bestellingen();
     $('#broodjesZaak_details').modal('hide');
-}
-
-
-function toon_winkel_wagentje()
-{
-    document.getElementById("uw_bestelling").style.background="cyan";
-    document.getElementById("uw_betaling").style.background="";
-
-    var winkelwagentje=haalWinkelwagentjeOp();
-    
-    final_bedrag=0.0;
-    total_no_of_products=0;
-
-    document.getElementById("winkeltablebody").innerHTML="";
-    
-    for(var i=0; i<winkelwagentje.length; i++)
-    {
-        var tabledata ="";
-        var tabledata1=""
-        tabledata += "<tr>";
-
-        if(winkelwagentje[i].snaam!=null)
-        {  
-            tabledata += "<td>" + winkelwagentje[i].pnaam + "<br>"+ winkelwagentje[i].snaam + "</td>";
-        }
-        else
-        {
-            tabledata += "<td>" + winkelwagentje[i].pnaam + "</td>";
-        }
-       
-        if(winkelwagentje[i].bsnaam!=null)
-        {
-           tabledata += "<td>" + winkelwagentje[i].bsnaam + "</td>";
-        }
-        else
-        {
-            tabledata += "<td>" + "---" + "</td>";
-        }
-
-        if(winkelwagentje[i].btnaam!=null)
-        {
-            tabledata += "<td>" + winkelwagentje[i].btnaam + "</td>";
-        }
-        else
-        {
-            tabledata += "<td>"+ "---" + "</td>";
-        }
-
-        //tabledata += "<td>" + winkelwagentje[i].totaal_stuks + "</td>";
-
-        tabledata += `<td>
-                     <input type="number" id= "wquantity${winkelwagentje[i].rowid}" min="1" value= ${winkelwagentje[i].totaal_stuks} aria-label="Search" class="form-control" style="width: 100px" onchange="aantal_prijs_wijzigen(${winkelwagentje[i].rowid});">
-                     </td>`;
-
-        tabledata += "<td>" +"€ " + winkelwagentje[i].totaal_bedrag + "</td>";
-        tabledata += "<td>" + `<button type="button" class="btn btn-sm btn-cyan" data-toggle="tooltip" data-placement="top" title="Verwijder item" onclick="verwijder_bestelling(${winkelwagentje[i].rowid})">Verwijder</button>`
-                    "</td>";
-        tabledata += "</tr>";
-       
-        document.getElementById("winkeltablebody").innerHTML += tabledata;
-
-        final_bedrag = Number(final_bedrag) + Number(winkelwagentje[i].totaal_bedrag);
-        final_bedrag = final_bedrag.toFixed(2);
-        total_no_of_products = total_no_of_products + Number(winkelwagentje[i].totaal_stuks);
-        console.log(total_no_of_products);
-    }
-   
-    tabledata1 += ` <tr>
-        <td> </td>
-        <td> </td>
-        
-        <td>
-            <h5 class="mt-2"><strong>Totaal</strong></h5>
-        </td>
-        <td class="text-right" colspan="2">
-            <h5 class="mt-2" id="final_bedrag"><strong> € ${final_bedrag} </strong></h5>
-        </td>
-
-        <td class="text-right">
-        <a type="button" id="ga_naar_betaling" href="#tabCheckoutPayment" data-toggle="tab" class="btn btn-cyan" onclick="sessioncontrol()">Bevestig Bestelling<i class="fas fa-angle-right right"></i></a>
-        </td>
-    </tr>`; 
-    document.getElementById("winkeltablebody").innerHTML += tabledata1;
-}
-
-
-function aantal_prijs_wijzigen(rowid)
-{
-    var winkelwagentje=haalWinkelwagentjeOp();
-    var totaal_bedrag=0;
-   
-    for(var i=0; i<winkelwagentje.length; i++)
-    {
-        if(winkelwagentje[i].rowid==rowid)
-        {
-            var count=document.getElementById("wquantity"+winkelwagentje[i].rowid).value;
-           
-            console.log(count);
-            winkelwagentje[i].totaal_stuks=count;
-            totaal_bedrag = (Number(winkelwagentje[i].pprijs) + Number(winkelwagentje[i].bsprijs) + Number(winkelwagentje[i].btprijs) + Number(winkelwagentje[i].smprice))  * count;
-            
-            if(winkelwagentje[i].catid==1 && winkelwagentje[i].dag==5 )
-            {
-                totaal_bedrag = totaal_bedrag - ((totaal_bedrag * 5)/100);
-                totaal_bedrag = totaal_bedrag.toFixed(2);
-            }
-            else if(winkelwagentje[i].catid==2 && winkelwagentje[i].dag==2)
-            {
-                totaal_bedrag = totaal_bedrag - ((totaal_bedrag * 10)/100);
-                totaal_bedrag = totaal_bedrag.toFixed(2);
-            }
-            else if(winkelwagentje[i].catid==3 && winkelwagentje[i].dag==1)
-            {
-                totaal_bedrag = totaal_bedrag - ((totaal_bedrag * 20)/100);
-                totaal_bedrag = totaal_bedrag.toFixed(2);
-            }
-
-            winkelwagentje[i].totaal_bedrag =totaal_bedrag;
-            console.log(winkelwagentje[i].totaal_bedrag);
-            console.log(winkelwagentje[i].totaal_stuks);
-        }
-    }
-    sessionStorage.setItem('winkelwagentje', JSON.stringify(winkelwagentje));
-    toon_winkel_wagentje();
-}
-
-
-function verwijder_bestelling(rowid)
-{
-    var winkelwagentje=haalWinkelwagentjeOp();
-    console.log(winkelwagentje);
-    
-    for(var i=0; i<winkelwagentje.length; i++)
-    {
-        if(winkelwagentje[i].rowid==rowid)
-        {
-            final_bedrag=Number(final_bedrag)-Number(winkelwagentje[i].totaal_bedrag);
-            winkelwagentje.splice(i,1);
-        }
-    }
-    console.log("final bedrag in verwijderen:", final_bedrag);
-    console.log(winkelwagentje);
-    aantaal_bestellingen--;
-    sessionStorage.setItem('aantaal_bestellingen', JSON.stringify(aantaal_bestellingen));
-    sessionStorage.setItem('winkelwagentje', JSON.stringify(winkelwagentje));
-    toon_winkel_wagentje();
 }
 
 
@@ -1308,6 +1320,7 @@ function ga_naar_login()
 }
 
 
+// Shopping cart payment //
 function samenvattingdata(besid)
 {
     document.getElementById("uw_bestelling").style.background="";
@@ -1401,7 +1414,6 @@ function post_in_producten_bestelling_tabel()
                 method: 'POST',
                 url: "https://api.data-web.be/item/create?project=fjgub4eD3ddg&entity=product_bestelling",
                 headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
-                //"filter": ["email", "like", "%" + useremail + "%"]
                 processData: false,
                 contentType: false,
                 data: formData
@@ -1443,7 +1455,6 @@ function post_in_producten_bestelling_tabel()
                     });
                         waarschuwing_modal2("betaald");
                         document.getElementById("plaats_bestelling").disabled=true;
-                        //document.location="index.html";
                 }
                 else 
                 {
@@ -1485,25 +1496,7 @@ function waarschuwing_modal2(warning)
 }
 
 
-function show_password(id) {
-    if (id==1)
-    {
-        var input = document.getElementById("login_wachtwoord");
-    } 
-    else if (id==2)
-    {
-        var input = document.getElementById("wachtwoord");
-    }
-    
-    if (input.type === "password") {
-        input.type = "text";
-        document.getElementById("eye"+id).className = "far fa-eye";
-    } else {
-        input.type = "password";
-        document.getElementById("eye"+id).className = "far fa-eye-slash";
-    }
-}
-
+// Promotions page //
 function krijg_promoties()
 {
     $.ajax
@@ -1515,10 +1508,10 @@ function krijg_promoties()
         console.log("read done:");
         console.log(response);
         promotie = response.data.items;
-        console.log(promotie);
+
         if(promotie == "")
         {
-            document.getElementById("promotie_categorie").innerHTML = "<br>" + "<br>" + "<center>" + "<b>" + "Geen Records gevonden" + "</b>" + "</center>";
+            document.getElementById("promotie2").innerHTML = "Geen Records gevonden";
         }
         else 
         {
@@ -1534,21 +1527,17 @@ function krijg_promoties()
 
 function toon_promoties()
 {
-    var foto1="klassieke.jpg";
-    var foto2="speciale.jpg";
-    var foto3="koudeschotel.jpg";
-
     for (i=0; i<promotie.length; i++)
     {
         document.getElementById("promotie"+i).innerHTML=
         `<div class="text-center">
             <a href="producten.html?catid=${promotie[i].catid}"><h3 style="color: black;">${promotie[i].catnaam}</h3></a>
             <div class="view zoom overlay z-depth-5 rounded">
-                <img class="img-fluid w-100" src="foto${promotie[i].catid}" alt="Sample">
+                <img class="img-fluid w-100" src="${promotie[i].catnaam}.jpg" alt="Sample">
                 <h2 class="mb-0" id="vandaag${i}" style="display:none"><span class="badge badge-pill animated tada infinite" style="position: absolute; top: 40%; left: 30%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.5);">Vandaag!</span></h2>
                 <a href="producten.html?catid=${promotie[i].catid}">
                     <div class="mask">
-                        <img class="img-fluid w-100" src="20_korting.png">
+                        <img class="img-fluid w-100" src="korting${promotie[i].catid}.png">
                         <div class="mask rgba-black-slight"></div>
                     </div>
                 </a>
