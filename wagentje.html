@@ -89,7 +89,7 @@
                                     </li>
                                     
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" id="uw_betaling" data-toggle="tab" href="#tabCheckoutPayment" role="tab" onclick="winkel_samenvatting()">2. Uw betaling</a>
+                                        <a class="nav-link text-dark" id="uw_betaling" data-toggle="tab" href="#tabCheckoutPayment" role="tab" onclick="sessioncontrol()">2. Uw betaling</a>
                                     </li>
                                 </ul>
 
@@ -187,8 +187,8 @@
 
                                             <div class="col-lg-4 mb-4">
                                                 <div class="card z-depth-0 border border-light rounded-0">
-                                                    <div class="table-responsive">         
-                                                        <table class="table product-table mb-0">                  
+                                                    <div class="table-responsive">
+                                                        <table class="table product-table mb-0">
                                                             <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Samenvatting</h4>
                                                             <tbody id="winkelsamenvatting"></tbody>
                                                         </table>
@@ -206,39 +206,21 @@
             </div>
 
             <!-- Warning Modal -->
-            <div class="modal fade" id="waarschuwingModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+            <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <div id="waarschuwingModalLabel1"></div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body" id="waarschuwingModalBody1"></div>
-                            <div class="modal-footer" id="waarschuwingModalFooter1">
-                            <button type="button" id="warning_button" class="btn btn-cyan" data-dismiss="modal" onclick="ga_naar_login()">Sluit</button>
+                            <div id="waarschuwingModalLabel"></div>
+                            <button type="button" id="warning_dismiss_button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="waarschuwingModalBody"></div>
+                        <div class="modal-footer" id="waarschuwingModalFooter">
+                            <button type="button" id="warning_button" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="waarschuwingModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div id="waarschuwingModalLabel2"></div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body" id="waarschuwingModalBody2"></div>
-                            <div class="modal-footer" id="waarschuwingModalFooter2">
-                            <button type="button" id="warning_button2" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+
         </main>
 
         <footer class="page-footer font-small darken-3 pt-4">

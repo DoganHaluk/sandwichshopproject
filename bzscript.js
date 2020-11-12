@@ -18,7 +18,7 @@ var broodsoort_gekozen_naam;
 var broodtype_gekozen_naam;
 var broodsoort_gekozen_prijs;
 var broodtype_gekozen_prijs;
-var smos_gekozen=0;
+var smos_gekozen;
 var smos_gekozen_id;
 var smos_gekozen_naam;
 var smos_gekozen_prijs;
@@ -379,62 +379,6 @@ function leeg_contactformulier()
 }
 
 
-// Warning popups for signup, login and contact //
-function waarschuwing_modal(warning)
-{   
-    $("#waarschuwingModal").modal();
-    var warning;
-
-    if (warning=="success")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie gelukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>U bent succesvol geregistreerd. U kunt nu inloggen.</p>';
-    }
-    else if (warning=="email")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mailadres bestaat al?</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ingevoerde e-mailadres bestaat al. Voer een ander e-mailadres in!</p>';
-    }
-    else if (warning=="fail")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie mislukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw registratie is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
-    }
-    
-    else if (warning=="password")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Wachtwoord of e-mail onjuist?</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ngevoerd e-mailadres of wachtwoord is onjuist. Voer de waarden opnieuw in!</p>';
-    }
-    else if (warning=="unsuccessful")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Aanmelden mislukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw aanmelden is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
-    }
-    else if (warning=="formsuccess")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag verzonden</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is succesvol verzonden. Bedankt!</p>';
-        
-    }
-    else if (warning=="formfail")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag mislukt</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is om onbekende redenen niet verzonden. Neem dan telefonisch contact met ons op.</p>';
-    }
-    else if (warning=="noemail")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail niet gevonden</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Dit e-mailadres is niet aanwezig in onze database.</p>';
-    }
-    else if (warning=="emailsent")
-    {
-        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail verzonden</h3>';
-        document.getElementById("waarschuwingModalBody").innerHTML= '<p>E-mail succesvol verzonden.</p>';
-    }
-}
-
-
 // Username in the header //
 function krijg_naam()
 {
@@ -680,7 +624,8 @@ function toon_producten_popup(pid,catid,prodprijs)
     {
         document.getElementById("naam").value = huidig_product.pnaam;
         broodsoort_gekozen = broodsoort[0].bsprijs;
-        broodtype_gekozen  = broodtype[0].btprijs;
+        broodtype_gekozen = broodtype[0].btprijs;
+        smos_gekozen = 0;
         voorberekening(catid);
     }
     else if(huidig_product.catid!=1 || huidig_product.catid!=2)
@@ -759,7 +704,7 @@ function create_modal(catid,pid,prodprijs)
                                 <input type="radio" id="1" name="smosselected" value="0" onclick="get_radio_button_value('0','smos','${catid}','1','Geen Smos')" checked>Neen 
                                 </label><br>
                                 <label>
-                                <input type="radio" id="2" name="smosselected" value="0.70" onclick="get_radio_button_value('0.70','smos','${catid}','2','+smos')">Ja 
+                                <input type="radio" id="2" name="smosselected" value="0.70" onclick="get_radio_button_value('0.70','smos','${catid}','2','+Smos')">Ja 
                                 </label><br>
                                 </div>  
 
@@ -854,7 +799,7 @@ function voorberekening(catid)
     smos_gekozen_naam="Geen Smos";
     
     berekening(catid);
-    update_modal(catid);     
+    update_modal(catid);
 }
 
 
@@ -866,14 +811,15 @@ function berekening(catid)
         
         var aantalstukjes = Number(document.getElementById("quantity").value);
         total_prijs = aantalstukjes * total_prijs;
-        voor_korting_prijs=total_prijs.toFixed(2);
+        total_prijs = total_prijs.toFixed(2);
+        voor_korting_prijs = total_prijs;
 
-        if(catid==1 && day===5)
+        if(catid==1 && day==5)
         {
             total_prijs=total_prijs - ((total_prijs*5)/100);
             total_prijs=total_prijs.toFixed(2);
         }
-        else if(catid==2 && day===2)
+        else if(catid==2 && day==2)
         {
             total_prijs=total_prijs - ((total_prijs*10)/100);
             total_prijs=total_prijs.toFixed(2);
@@ -883,7 +829,8 @@ function berekening(catid)
     {
         var aantalstukjes = Number(document.getElementById("quantity").value);
         total_prijs = aantalstukjes * huidig_product.prodprijs;
-        voor_korting_prijs=total_prijs.toFixed(2);
+        total_prijs = total_prijs.toFixed(2);
+        voor_korting_prijs=total_prijs;
 
         if(catid==3 && day==1)
         {
@@ -1015,7 +962,7 @@ function toon_aantal_bestellingen()
 }
 
 
-// Shopping cart order //
+// Shopping cart: order //
 function toon_winkel_wagentje()
 {
     document.getElementById("uw_bestelling").style.background="cyan";
@@ -1241,7 +1188,7 @@ function sessioncontrol()
 
     if(token_check==null)
     {
-        waarschuwing_modal1("login");
+        waarschuwing_modal("login");
     }
     else
     {
@@ -1301,26 +1248,7 @@ function sessioncontrol()
 }
 
 
-function waarschuwing_modal1(warning)
-{   
-    $("#waarschuwingModal1").modal();
-    var warning;
-
-    if (warning=="login")
-    {
-        document.getElementById("waarschuwingModalLabel1").innerHTML='<h3 class="modal-title" id="waarschuwingModalLabel">Nog niet ingelogd?</h3>';
-        document.getElementById("waarschuwingModalBody1").innerHTML= '<p>Log in om verder te gaan, aub!</p>';   
-    }
-}
-
-
-function ga_naar_login()
-{
-    document.location = "aanmelden.html?directed_from=wagentje";
-}
-
-
-// Shopping cart payment //
+// Shopping cart: payment //
 function samenvattingdata(besid)
 {
     document.getElementById("uw_bestelling").style.background="";
@@ -1453,8 +1381,8 @@ function post_in_producten_bestelling_tabel()
                         console.log("read fail:");
                         console.log(msg);
                     });
-                        waarschuwing_modal2("betaald");
-                        document.getElementById("plaats_bestelling").disabled=true;
+                    waarschuwing_modal("betaald");
+                    document.getElementById("plaats_bestelling").disabled=true;
                 }
                 else 
                 {
@@ -1470,28 +1398,7 @@ function post_in_producten_bestelling_tabel()
     }
     else
     {
-        waarschuwing_modal2("niet_betaald");
-    }
-}
-
-
-function waarschuwing_modal2(warning)
-{   
-    $("#waarschuwingModal2").modal();
-    var warning;
-
-     if(warning=="niet_betaald")
-    {
-        document.getElementById("waarschuwingModalLabel2").innerHTML='<h3 class="modal-title" id="waarschuwingModalLabel">Nog niet betalen?</h3>';
-        document.getElementById("waarschuwingModalBody2").innerHTML= '<p>Voer de betaling uit om de bestelling te ontvangen aub!</p>';
-    }
-    else if(warning=="betaald")
-    {
-        sessionStorage.removeItem('aantaal_bestellingen');
-        sessionStorage.removeItem('winkelwagentje');
-        document.getElementById("waarschuwingModalLabel2").innerHTML='<h3 class="modal-title" id="waarschuwingModalLabel">Bedankt voor de betaling.</h3>';
-        document.getElementById("waarschuwingModalBody2").innerHTML= '<p>We zullen uw bestelling binnenkort bezorgen. aub!</p>';
-        document.getElementById("warning_button2").onclick = function () { document.location="index.html"; };
+        waarschuwing_modal("niet_betaald");
     }
 }
 
@@ -1554,5 +1461,82 @@ function toon_promoties()
         {
             document.getElementById("vandaag"+i).style.display = "block";
         }
+    }
+}
+
+
+// Warning popups for signup, login, contact and shoppingcart //
+function waarschuwing_modal(warning)
+{   
+    $("#waarschuwingModal").modal();
+    var warning;
+
+    if (warning=="success")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie gelukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>U bent succesvol geregistreerd. U kunt nu inloggen.</p>';
+    }
+    else if (warning=="email")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mailadres bestaat al?</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ingevoerde e-mailadres bestaat al. Voer een ander e-mailadres in!</p>';
+    }
+    else if (warning=="fail")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Registratie mislukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw registratie is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
+    }
+    
+    else if (warning=="password")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Wachtwoord of e-mail onjuist?</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Het ngevoerd e-mailadres of wachtwoord is onjuist. Voer de waarden opnieuw in!</p>';
+    }
+    else if (warning=="unsuccessful")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Aanmelden mislukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw aanmelden is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
+    }
+    else if (warning=="formsuccess")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag verzonden</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is succesvol verzonden. Bedankt!</p>';
+        
+    }
+    else if (warning=="formfail")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Vraag mislukt</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Uw vraag is om onbekende redenen niet verzonden. Neem dan telefonisch contact met ons op.</p>';
+    }
+    else if (warning=="noemail")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail niet gevonden</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Dit e-mailadres is niet aanwezig in onze database.</p>';
+    }
+    else if (warning=="emailsent")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">E-mail verzonden</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>E-mail succesvol verzonden.</p>';
+    }
+    else if (warning=="login")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Nog niet ingelogd?</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Log in om verder te gaan, aub!</p>';
+        document.getElementById("warning_dismiss_button").onclick = function () { document.location="aanmelden.html?directed_from=wagentje"; };
+        document.getElementById("warning_button").onclick = function () { document.location="aanmelden.html?directed_from=wagentje"; };
+    }
+    else if(warning=="niet_betaald")
+    {
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Nog niet betalen?</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>Voer de betaling uit om de bestelling te ontvangen aub!</p>';
+    }
+    else if(warning=="betaald")
+    {
+        sessionStorage.removeItem('aantaal_bestellingen');
+        sessionStorage.removeItem('winkelwagentje');
+        document.getElementById("waarschuwingModalLabel").innerHTML='<h3 class="modal-title">Bedankt voor de betaling.</h3>';
+        document.getElementById("waarschuwingModalBody").innerHTML= '<p>We zullen uw bestelling binnenkort bezorgen.</p>';
+        document.getElementById("warning_dismiss_button").onclick = function () { document.location="index.html"; };
+        document.getElementById("warning_button").onclick = function () { document.location="index.html"; };
     }
 }
