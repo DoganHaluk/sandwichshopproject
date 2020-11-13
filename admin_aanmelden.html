@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HBH Broodjeszaak - Admin Aanmelden</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" type ="text/css" href="Harikastartpagina.css"/>
+    <script src="aanmelden_registratie_common_file1.js"></script>
+    <script src="producten_overzicht.js"></script>
+    <!--<script src="categorien_overzicht.js"></script>
+    <script src="broodsoorten_overzicht.js"></script>
+    <script src="bestellingen_overzicht.js"></script>
+    <script src="contact_overzicht.js"></script>-->
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" >
+            <img class="navbar-brand" src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-1" style="max-width: 100px" alt="Responsive image">
+            <h3 style="color: white;">Admin Aanmelden</h3>
+        </nav>
+    </header>
+
+    <main class="admin_aanmelden">
+        
+        <div class="container p-5">
+            <section class="dark-grey-text">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+                                <form class="text-center" id="loginform">
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Log in</p>
+                                    <input type="email" id="login_email" class="form-control" placeholder="E-mail" minlength="5" required>
+                                    <div id="login_warning_0"></div>
+                                    <input type="password" id="login_wachtwoord" class="form-control mt-4" placeholder="Wachtwoord" minlength="5" required>
+                                    <div id="login_warning_1"></div>
+                                </form>
+                                
+                                <button class="btn btn-cyan btn-block my-4" type="button" onclick="login_validatie();">Log in</button>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Warning Modal -->
+        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div id="waarschuwingModalLabel"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" id="waarschuwingModalBody"></div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="page-footer font-small darken-3 pt-4">
+        <div class="container text-center">
+            <div class="row">
+                
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4"><a href="../aanmelden1.html">Aanmelden</a></h6>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4"><a href="../producten1.html?catid=">Producten</a></h6>
+                    <p><a href="../producten1.html?catid=1">Klassieke Broodjes</a></p>
+                    <p><a href="../producten1.html?catid=2">Speciale Broodjes</a></p>
+                    <p><a href="../producten1.html?catid=3">Koude Schotels</a></p>
+                    <p><a href="../producten1.html?catid=4">Drankjes</a></p>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4"><a href="../promoties.html">Promoties</a></h6>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+            <a href="../index1.html"> HBH Broodjeszaak</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<main>
+
+        <div class="container p-5">
+            <section class="dark-grey-text">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
+
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+
+                                <form class="text-center" id="loginform">
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Log in</p>
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Als Admin</p>
+
+                                    <input type="email" id="login_email" class="form-control" placeholder="E-mail" minlength="7" required>
+                                    <div id="login_warning_0"></div>
+                                    <input type="password" id="login_wachtwoord" class="form-control mt-4" placeholder="Wachtwoord" minlength="5" required>
+                                    <div id="login_warning_1"></div>
+                                </form>
+                                   
+                                <button class="btn btn-cyan btn-block my-4" type="button" onclick="login_validatie();">Log in</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+
+                                <form class="text-center" id="registerform">
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Registreer</p>
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Als Admin</p>
+                                
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <input type="text" id="voornaam" class="form-control" placeholder="Voornaam" minlength="2" required>
+                                            <div id="register_warning_0"></div>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="achternaam" class="form-control" placeholder="Achternaam" minlength="2" required>
+                                            <div id="register_warning_1"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="email" id="email" class="form-control mt-4" placeholder="E-mail" minlength="5" required>
+                                    <div id="register_warning_2"></div>
+                                    <input type="tel" id="telefoonnummer" class="form-control mt-4" placeholder="Telefoonnummer" aria-describedby="registerFormPhoneHelpBlock" minlength="9" required>
+                                    <div id="register_warning_3"></div>
+                                    <input type="password" id="wachtwoord" class="form-control mt-4" placeholder="Wachtwoord" aria-describedby="registerFormPasswordHelpBlock" minlength="8" required>
+                                    <div id="register_warning_4">
+                                        <small class="form-text text-muted">Minimaal 8 karakters en 1 cijfer</small>
+                                    </div>
+                                    <hr>
+
+                                    <input type="text" id="adres" class="form-control mt-4" placeholder="Adres" minlength="2" required>
+                                    <div id="register_warning_5"></div>
+                                    <input type="text" pattern="[0-9]{4}" id="postcode" class="form-control mt-4" placeholder="Postcode" required>
+                                    <div id="register_warning_6"></div>
+                                    <select class="browser-default custom-select my-4">
+                                        <option value="België" selected disabled>België</option>
+                                    </select>
+                                </form>
+
+                                <button class="btn btn-cyan my-4 btn-block" type="submit" onclick="register_validatie()">Registreer</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>-->
+
+        <!-- Modal wrong password -->
+       <!-- <div class="modal fade" id="verkeerdeWachtwoordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="wrongPasswordModalLabel">Wachtwoord of e-mail onjuist?</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Ingevoerd e-mailadres of wachtwoord is onjuist. Voer de waarden opnieuw in!</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="page-footer font-small darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 py-3">
+                    <div class="mb-5 flex-center">
+                        <a class="fb-ic" href="https://www.facebook.com/">
+                            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="tw-ic" href="https://twitter.com/">
+                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="gplus-ic" href="https://accounts.google.com">
+                            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="li-ic" href="https://www.linkedin.com/login/">
+                            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="ins-ic" href="https://www.instagram.com/">
+                            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="pin-ic" href="https://www.pinterest.com/">
+                            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+            <a href="https://mdbootstrap.com/"> HBH Broodjeszaak</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>-->
