@@ -1,314 +1,317 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>HBH Broodjeszaak - Aanmelden</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" type ="text/css" href="bz.css"/>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
-        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-        <script src="bzscript.js"></script>
-    </head>
 
-    <body onload="haalWinkelwagentjeOp(); krijg_naam(); onthouden()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HBH Broodjeszaak - Aanmelden</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="bz.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="bzscript.js"></script>
+</head>
 
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark" >
-                <a class="navbar-brand" href="index.html">
-                    <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body onload="haalWinkelwagentjeOp(); krijg_naam(); onthouden()">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Welkom</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="login" href="aanmelden.html">Aanmelden<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown" id="gebruikersnaam"></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="promoties.html">Promoties</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                        </li>    
-                        <li class="nav-item">
-                            <span class="badge badge-default badge-pill" id="antaal_producten" style="color: white;"></span>
-                        </li>
-                    </ul>
-                </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-5" style="max-width: 100px" alt="Responsive image">
+            </a>
 
-            </nav>
-        </header>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <main>
-
-            <div class="row justify-content-center m-0">
-                <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white"><h4><strong>AANMELDEN</strong></h4></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Welkom</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Producten</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="producten.html?catid=">Alle Producten</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=1">Klassieke Broodjes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=2">Speciale Broodjes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=3">Koude Schotels</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="producten.html?catid=4">Drankjes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="login" href="aanmelden.html">Aanmelden<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown" id="gebruikersnaam"></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promoties.html">Promoties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wagentje.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="badge badge-default badge-pill" id="antaal_producten" style="color: white;"></span>
+                    </li>
+                </ul>
             </div>
 
-            <div class="container p-5">
-                <section class="dark-grey-text">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
-                            <div class="card z-depth-5">
-                                <div class="card-body">
-                                    <form class="text-center" id="loginform">
-                                        <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Al klant?</p>
-                                        <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Log in</p>
+        </nav>
+    </header>
 
-                                        <input type="email" id="login_email" class="form-control" placeholder="E-mail" minlength="5" required>
-                                        <div id="login_warning_0"></div>
-                                        <div class="form-label-group input-group mt-4">
-                                            <input type="password" id="login_wachtwoord"  class="form-control active" placeholder="Wachtwoord" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i id="eye1" class="far fa-eye-slash" onclick="show_password(1)"></i></span>
-                                            </div>
-                                        </div>
-                                        <div id="login_warning_1"></div>
-                                    </form>
-                                        <div class="d-flex justify-content-around mt-4">
-                                            <div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="loginFormRemember"  required>
-                                                    <label class="custom-control-label" for="loginFormRemember">Onthoud</label>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <a data-toggle="modal" style="color: cyan" data-target="#forgetPasswordModal">Wachtwoord vergeten?</a>
-                                            </div>
-                                        </div>
-                                    
-                                        <button class="btn btn-cyan btn-block my-4" id="login_button" type="button" onclick="login_validatie();">Log in</button>
+    <main>
 
-                                        <div  class="text-center">
-                                            <p>of log in met:</p>
-                                            <a href="https://www.facebook.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-facebook-f cyan-text"></i></a>
-                                            <a href="https://twitter.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-twitter cyan-text"></i></a>
-                                            <a href="https://www.linkedin.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-linkedin-in cyan-text"></i></a>
-                                            <a href="https://www.instagram.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-instagram cyan-text"></i></a>
+        <div class="row justify-content-center m-0">
+            <button type="button" class="btn btn-white btn-outline-default waves-effect z-depth-5" style="background-color: white">
+                <h4><strong>AANMELDEN</strong></h4>
+            </button>
+        </div>
+
+        <div class="container p-5">
+            <section class="dark-grey-text">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+                                <form class="text-center" id="loginform">
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Al klant?</p>
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white">Log in</p>
+
+                                    <input type="email" id="login_email" class="form-control" placeholder="E-mail" minlength="5" required>
+                                    <div id="login_warning_0"></div>
+                                    <div class="form-label-group input-group mt-4">
+                                        <input type="password" id="login_wachtwoord" class="form-control active" placeholder="Wachtwoord" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i id="eye1" class="far fa-eye-slash" onclick="show_password(1)"></i></span>
                                         </div>
+                                    </div>
+                                    <div id="login_warning_1"></div>
+                                </form>
+                                <div class="d-flex justify-content-around mt-4">
+                                    <div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="loginFormRemember" required>
+                                            <label class="custom-control-label" for="loginFormRemember">Onthoud</label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a data-toggle="modal" style="color: cyan" data-target="#forgetPasswordModal">Wachtwoord vergeten?</a>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-cyan btn-block my-4" id="login_button" type="button" onclick="login_validatie();">Log in</button>
+
+                                <div class="text-center">
+                                    <p>of log in met:</p>
+                                    <a href="https://www.facebook.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-facebook-f cyan-text"></i></a>
+                                    <a href="https://twitter.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-twitter cyan-text"></i></a>
+                                    <a href="https://www.linkedin.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-linkedin-in cyan-text"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-instagram cyan-text"></i></a>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
-                            <div class="card z-depth-5">
-                                <div class="card-body">
-                                    <form class="text-center" id="registerform">
-                                        <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white"> Nieuwe gebruiker? </p>
-                                        <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white"> Registreren</p>
-                                    
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <input type="text" id="voornaam" class="form-control" placeholder="Voornaam" minlength="2" required>
-                                                <div id="register_warning_0"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" id="achternaam" class="form-control" placeholder="Achternaam" minlength="2" required>
-                                                <div id="register_warning_1"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <input type="email" id="email" class="form-control mt-4" placeholder="E-mail" minlength="5" required>
-                                        <div id="register_warning_2"></div>
-                                        <input type="tel"id="telefoonnummer" class="form-control mt-4" placeholder="Telefoonnummer" aria-describedby="registerFormPhoneHelpBlock"  pattern="[0-9]{9,}" required>
-                                        <div id="register_warning_3"></div>
-                                        <div class="form-label-group input-group mt-4">
-                                            <input type="password" id="wachtwoord" class="form-control" placeholder="Wachtwoord" aria-describedby="registerFormPasswordHelpBlock" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i id="eye2" class="far fa-eye-slash" onclick="show_password(2)"></i></span>
-                                            </div>
-                                        </div>
-                                        <div id="register_warning_4">
-                                            <small class="form-text text-muted">Minimaal 8 karakters, 1 hoofdletter en 1 cijfer</small>
-                                        </div>
-                                        <hr>
+                    <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
+                        <div class="card z-depth-5">
+                            <div class="card-body">
+                                <form class="text-center" id="registerform">
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white"> Nieuwe gebruiker? </p>
+                                    <p class="h3-responsive font-weight-bold mb-4" style=" background-color:white"> Registreren</p>
 
-                                        <input type="text" id="adres" class="form-control mt-4" placeholder="Adres" minlength="2" required>
-                                        <div id="register_warning_5"></div>
-                                        <input type="text" id="postcode" class="form-control mt-4" placeholder="Postcode" pattern="[0-9]{4}" required>
-                                        <div id="register_warning_6"></div>
-                                        <select class="browser-default custom-select my-4">
-                                            <option value="België" selected disabled>België</option>
-                                        </select>
-                                    </form>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="suggesties">
-                                        <label class="custom-control-label" for="suggesties">Ja, ik wens graag op de hoogte gehouden te worden van promoties, suggesties en verlofperiodes.</label>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <input type="text" id="voornaam" class="form-control" placeholder="Voornaam" minlength="2" required>
+                                            <div id="register_warning_0"></div>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="achternaam" class="form-control" placeholder="Achternaam" minlength="2" required>
+                                            <div id="register_warning_1"></div>
+                                        </div>
                                     </div>
 
-                                    <button class="btn btn-cyan my-4 btn-block" type="submit" onclick="register_validatie()">Registreer</button>
-                                    <div  class="text-center">
-                                        <p>of meld je aan met:</p>
-                                        <a href="https://www.facebook.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-facebook-f cyan-text"></i></a>
-                                        <a href="https://twitter.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-twitter cyan-text"></i></a>
-                                        <a href="https://www.linkedin.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-linkedin-in cyan-text"></i></a>
-                                        <a href="https://www.instagram.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-instagram cyan-text"></i></a>
+                                    <input type="email" id="email" class="form-control mt-4" placeholder="E-mail" minlength="5" required>
+                                    <div id="register_warning_2"></div>
+                                    <input type="tel" id="telefoonnummer" class="form-control mt-4" placeholder="Telefoonnummer" aria-describedby="registerFormPhoneHelpBlock" pattern="[0-9]{9,}" required>
+                                    <div id="register_warning_3"></div>
+                                    <div class="form-label-group input-group mt-4">
+                                        <input type="password" id="wachtwoord" class="form-control" placeholder="Wachtwoord" aria-describedby="registerFormPasswordHelpBlock" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i id="eye2" class="far fa-eye-slash" onclick="show_password(2)"></i></span>
+                                        </div>
+                                    </div>
+                                    <div id="register_warning_4">
+                                        <small class="form-text text-muted">Minimaal 8 karakters, 1 hoofdletter en 1 cijfer</small>
                                     </div>
                                     <hr>
 
-                                    <p>Je persoonlijke gegevens zullen worden gebruikt om je klantenaccount te kunnen beheren, om je beleving op deze website te optimaliseren en voor andere doeleinden zoals beschreven in ons <a data-toggle="modal" style="color: cyan" data-target="#privacyPolicyModal">privacybeleid</a>.
+                                    <input type="text" id="adres" class="form-control mt-4" placeholder="Adres" minlength="2" required>
+                                    <div id="register_warning_5"></div>
+                                    <input type="text" id="postcode" class="form-control mt-4" placeholder="Postcode" pattern="[0-9]{4}" required>
+                                    <div id="register_warning_6"></div>
+                                    <select class="browser-default custom-select my-4">
+                                        <option value="België" selected disabled>België</option>
+                                    </select>
+                                </form>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="suggesties">
+                                    <label class="custom-control-label" for="suggesties">Ja, ik wens graag op de hoogte gehouden te worden van promoties, suggesties en verlofperiodes.</label>
                                 </div>
+
+                                <button class="btn btn-cyan my-4 btn-block" type="submit" onclick="register_validatie()">Registreer</button>
+                                <div class="text-center">
+                                    <p>of meld je aan met:</p>
+                                    <a href="https://www.facebook.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-facebook-f cyan-text"></i></a>
+                                    <a href="https://twitter.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-twitter cyan-text"></i></a>
+                                    <a href="https://www.linkedin.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-linkedin-in cyan-text"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank" class="mx-2" role="button"><i class="fab fa-instagram cyan-text"></i></a>
+                                </div>
+                                <hr>
+
+                                <p>Je persoonlijke gegevens zullen worden gebruikt om je klantenaccount te kunnen beheren, om je beleving op deze website te optimaliseren en voor andere doeleinden zoals beschreven in ons <a data-toggle="modal" style="color: cyan" data-target="#privacyPolicyModal">privacybeleid</a>.</p>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
+        </div>
 
-            <!-- Modal privacy policy -->
-            <div class="modal fade" id="privacyPolicyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="privacyPolicyModalLabel">Privacybeleid</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                                <h4>Welke persoonlijke gegevens we verzamelen en waarom we deze verzamelen</h4><br>
-                                <h5>Opmerkingen</h5><br>
-                                Als bezoekers reacties achterlaten op de site, verzamelen we de gegevens getoond in het reactieformulier, het IP-adres van de bezoeker en de browser user agent om te helpen spam te detecteren.<br>
-                                Een geanonimiseerde string die is gemaakt op basis van uw e-mailadres (ook wel een hash genoemd) kan aan de Gravatar-service worden verstrekt om te zien of u deze gebruikt. Het privacybeleid van de Gravatar-service is hier beschikbaar: https://automattic.com/privacy/. Na goedkeuring van je opmerking is je profielfoto zichtbaar voor het publiek in de context van je opmerking.<br><br>
-                                <h5>Media</h5><br>
-                                Als u afbeeldingen naar de website uploadt, moet u voorkomen dat u afbeeldingen uploadt met ingesloten locatiegegevens (EXIF GPS). Bezoekers van de website kunnen locatiegegevens downloaden en extraheren uit afbeeldingen op de website.<br><br>
-                                <h5>Contactformulieren</h5><br>
-                                <h5>Cookies</h5><br>
-                                Als u een reactie achterlaat op onze site, kunt u ervoor kiezen om uw naam, e-mailadres en website in cookies op te slaan. Deze zijn voor uw gemak zodat u uw gegevens niet opnieuw hoeft in te vullen als u nog een opmerking achterlaat. Deze cookies gaan een jaar mee.<br>
-                                Als u onze inlogpagina bezoekt, zullen we een tijdelijke cookie plaatsen om te bepalen of uw browser cookies accepteert. Deze cookie bevat geen persoonlijke gegevens en wordt verwijderd zodra u uw browser sluit.<br>
-                                Wanneer u zich aanmeldt, zullen we ook verschillende cookies instellen om uw inloggegevens en uw schermweergavemogelijkheden op te slaan. Inlogcookies zijn twee dagen geldig en cookies voor schermopties een jaar. Als u "Onthoud mij" selecteert, wordt uw login twee weken bewaard. Als u zich afmeldt bij uw account, worden de inlogcookies verwijderd.<br>
-                                Als u een artikel bewerkt of publiceert, wordt er een extra cookie in uw browser opgeslagen. Deze cookie bevat geen persoonlijke gegevens en geeft eenvoudig de post-ID aan van het artikel dat u zojuist hebt bewerkt. Het vervalt na 1 dag.<br><br>
-                                <h5>Ingesloten inhoud van andere websites</h5><br>
-                                Artikelen op deze site kunnen ingesloten inhoud bevatten (bijv. Video's, afbeeldingen, artikelen, enz.). Ingesloten inhoud van andere websites gedraagt zich exact hetzelfde alsof de bezoeker de andere website heeft bezocht.<br>
-                                Deze websites kunnen data over jou verzamelen, cookies gebruiken, tracking van derde partijen insluiten en je interactie met die ingesloten inhoud monitoren, inclusief de interactie met de ingesloten inhoud als je een account hebt en ingelogd bent op die website.<br><br>
-                                <h5>Hoe lang we uw gegevens bewaren</h5><br>
-                                Als u een opmerking achterlaat, worden de opmerking en de metagegevens voor onbepaalde tijd bewaard. Dit is zodat we vervolgopmerkingen automatisch kunnen herkennen en goedkeuren in plaats van ze in een moderatierij te houden.<br>
-                                Voor gebruikers die zich registreren op onze website (indien aanwezig), slaan we ook de persoonlijke informatie op die ze verstrekken in hun gebruikersprofiel. Alle gebruikers kunnen hun persoonlijke gegevens op elk moment bekijken, bewerken of verwijderen (behalve dat ze hun gebruikersnaam niet kunnen wijzigen). Websitebeheerders kunnen die informatie ook zien en bewerken.<br><br>
-                                <h5>Welke rechten u heeft over uw gegevens</h5><br>
-                                Als je een account hebt op deze site of reacties hebt achtergelaten, kun je verzoeken om een exportbestand van de persoonlijke gegevens die we van je hebben, inclusief alle gegevens die je ons opgegeven hebt. U kunt ook verzoeken dat we alle persoonlijke gegevens die we over u hebben, verwijderen. Dit bevat geen gegevens die we verplicht moeten bewaren in verband met administratieve, wettelijke of beveiligingsdoeleinden.<br><br>
-                                <h5>Waar we uw gegevens naartoe sturen</h5><br>
-                                Reacties van bezoekers kunnen worden gecontroleerd door een geautomatiseerde spamdetectieservice.<br>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-cyan" data-dismiss="modal">Close</button>
+        <!-- Modal privacy policy -->
+        <div class="modal fade" id="privacyPolicyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="privacyPolicyModalLabel">Privacybeleid</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Welke persoonlijke gegevens we verzamelen en waarom we deze verzamelen</h4><br>
+                        <h5>Opmerkingen</h5><br>
+                        Als bezoekers reacties achterlaten op de site, verzamelen we de gegevens getoond in het reactieformulier, het IP-adres van de bezoeker en de browser user agent om te helpen spam te detecteren.<br>
+                        Een geanonimiseerde string die is gemaakt op basis van uw e-mailadres (ook wel een hash genoemd) kan aan de Gravatar-service worden verstrekt om te zien of u deze gebruikt. Het privacybeleid van de Gravatar-service is hier beschikbaar: https://automattic.com/privacy/. Na goedkeuring van je opmerking is je profielfoto zichtbaar voor het publiek in de context van je opmerking.<br><br>
+                        <h5>Media</h5><br>
+                        Als u afbeeldingen naar de website uploadt, moet u voorkomen dat u afbeeldingen uploadt met ingesloten locatiegegevens (EXIF GPS). Bezoekers van de website kunnen locatiegegevens downloaden en extraheren uit afbeeldingen op de website.<br><br>
+                        <h5>Contactformulieren</h5><br>
+                        <h5>Cookies</h5><br>
+                        Als u een reactie achterlaat op onze site, kunt u ervoor kiezen om uw naam, e-mailadres en website in cookies op te slaan. Deze zijn voor uw gemak zodat u uw gegevens niet opnieuw hoeft in te vullen als u nog een opmerking achterlaat. Deze cookies gaan een jaar mee.<br>
+                        Als u onze inlogpagina bezoekt, zullen we een tijdelijke cookie plaatsen om te bepalen of uw browser cookies accepteert. Deze cookie bevat geen persoonlijke gegevens en wordt verwijderd zodra u uw browser sluit.<br>
+                        Wanneer u zich aanmeldt, zullen we ook verschillende cookies instellen om uw inloggegevens en uw schermweergavemogelijkheden op te slaan. Inlogcookies zijn twee dagen geldig en cookies voor schermopties een jaar. Als u "Onthoud mij" selecteert, wordt uw login twee weken bewaard. Als u zich afmeldt bij uw account, worden de inlogcookies verwijderd.<br>
+                        Als u een artikel bewerkt of publiceert, wordt er een extra cookie in uw browser opgeslagen. Deze cookie bevat geen persoonlijke gegevens en geeft eenvoudig de post-ID aan van het artikel dat u zojuist hebt bewerkt. Het vervalt na 1 dag.<br><br>
+                        <h5>Ingesloten inhoud van andere websites</h5><br>
+                        Artikelen op deze site kunnen ingesloten inhoud bevatten (bijv. Video's, afbeeldingen, artikelen, enz.). Ingesloten inhoud van andere websites gedraagt zich exact hetzelfde alsof de bezoeker de andere website heeft bezocht.<br>
+                        Deze websites kunnen data over jou verzamelen, cookies gebruiken, tracking van derde partijen insluiten en je interactie met die ingesloten inhoud monitoren, inclusief de interactie met de ingesloten inhoud als je een account hebt en ingelogd bent op die website.<br><br>
+                        <h5>Hoe lang we uw gegevens bewaren</h5><br>
+                        Als u een opmerking achterlaat, worden de opmerking en de metagegevens voor onbepaalde tijd bewaard. Dit is zodat we vervolgopmerkingen automatisch kunnen herkennen en goedkeuren in plaats van ze in een moderatierij te houden.<br>
+                        Voor gebruikers die zich registreren op onze website (indien aanwezig), slaan we ook de persoonlijke informatie op die ze verstrekken in hun gebruikersprofiel. Alle gebruikers kunnen hun persoonlijke gegevens op elk moment bekijken, bewerken of verwijderen (behalve dat ze hun gebruikersnaam niet kunnen wijzigen). Websitebeheerders kunnen die informatie ook zien en bewerken.<br><br>
+                        <h5>Welke rechten u heeft over uw gegevens</h5><br>
+                        Als je een account hebt op deze site of reacties hebt achtergelaten, kun je verzoeken om een exportbestand van de persoonlijke gegevens die we van je hebben, inclusief alle gegevens die je ons opgegeven hebt. U kunt ook verzoeken dat we alle persoonlijke gegevens die we over u hebben, verwijderen. Dit bevat geen gegevens die we verplicht moeten bewaren in verband met administratieve, wettelijke of beveiligingsdoeleinden.<br><br>
+                        <h5>Waar we uw gegevens naartoe sturen</h5><br>
+                        Reacties van bezoekers kunnen worden gecontroleerd door een geautomatiseerde spamdetectieservice.<br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cyan" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal forget password -->
+        <div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="forgetPasswordModalLabel">Wachtwoord vergeten?</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post">
+                        <div class="modal-body">
+                            <p>Voer uw e-mailadres in. U ontvangt een nieuw wachtwoord.</p>
+                            <input type="email" id="vergetenWachtwoord" class="form-control mb-4" placeholder="E-mail" minlength="5" required>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal forget password -->
-            <div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="forgetPasswordModalLabel">Wachtwoord vergeten?</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-cyan" data-dismiss="modal" onclick="vergetenWachtwoord()">Wachtwoord Opnieuw Instellen</button>
                         </div>
-                        <form method="post"></form>
-                            <div class="modal-body">
-                                <p>Voer uw e-mailadres in. U ontvangt een nieuw wachtwoord.</p>
-                                <input type="email" id="vergetenWachtwoord" class="form-control mb-4" placeholder="E-mail" minlength="5" required>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-cyan" data-dismiss="modal" onclick="vergetenWachtwoord()">Wachtwoord Opnieuw Instellen</button>
-                            </div>
-                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Warning Modal -->
+        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div id="waarschuwingModalLabel"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="waarschuwingModalBody"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Warning Modal -->
-            <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div id="waarschuwingModalLabel"></div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body" id="waarschuwingModalBody"></div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-cyan" data-dismiss="modal">Sluit</button>
-                        </div>
-                    </div>
+    </main>
+
+    <footer class="page-footer font-small darken-3 pt-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-md-0 mb-3 text-md-right">
+                    <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
+                    <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
+                    <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
+                    <p><a href="producten.html?catid=3">Koude Schotels</a></p>
+                    <p><a href="producten.html?catid=4">Drankjes</a></p>
                 </div>
-            </div>
 
-        </main>
+                <hr class="clearfix w-100 d-md-none pb-3">
 
-        <footer class="page-footer font-small darken-3 pt-4">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-md-4 mb-md-0 mb-3 text-md-right">
-                        <h6 class="text-uppercase font-weight-bold mb-4">Producten</h6>
-                        <p><a href="producten.html?catid=1">Klassieke Broodjes</a></p>
-                        <p><a href="producten.html?catid=2">Speciale Broodjes</a></p>
-                        <p><a href="producten.html?catid=3">Koude Schotels</a></p>
-                        <p><a href="producten.html?catid=4">Drankjes</a></p>
-                    </div>
-                    
-                    <hr class="clearfix w-100 d-md-none pb-3">
-
-                    <div class="col-md-4 mb-md-0 mb-3">
-                        <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
-                        <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
-                        <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
-                        <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
-                        <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
-                    </div>
-
-                    <hr class="clearfix w-100 d-md-none pb-3">
-
-                    <div class="col-md-4 mb-md-0 mb-3 text-md-left">
-                        <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
-                        <p><i class="fas fa-envelope mr-3"></i>hbhbroodjeszaak@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
-                        <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
-                    </div>
-                    
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4">Volg ons</h6>
+                    <a class="fb-ic" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-lg white-text mx-2 fa-2x"> </i></a>
+                    <a class="tw-ic" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-lg white-text mx-2 fa-2x"> </i></a>
+                    <a class="li-ic" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in fa-lg white-text mx-2 fa-2x"> </i></a>
+                    <a class="ins-ic" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-lg white-text mx-2 fa-2x"> </i></a>
                 </div>
-            </div>
 
-            <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
-                <a href="index.html"> HBH Broodjeszaak</a>
-            </div>
-        </footer>
+                <hr class="clearfix w-100 d-md-none pb-3">
 
-    </body>
+                <div class="col-md-4 mb-md-0 mb-3 text-md-left">
+                    <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home mr-3"></i>Van Wesenbekestraat 1 2060, Antwerpen België</p>
+                    <p><i class="fas fa-envelope mr-3"></i>hbhbroodjeszaak@gmail.com</p>
+                    <p><i class="fas fa-phone mr-3"></i>03/111 22 33</p>
+                    <p><i class="fas fa-door-open mr-3"></i>Openingsuren: 09:00 – 19:00</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+            <a href="index.html"> HBH Broodjeszaak</a>
+        </div>
+    </footer>
+
+</body>
 
 </html>
