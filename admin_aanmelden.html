@@ -16,7 +16,7 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bz.css" />
-    <script src="aanmelden_registratie_common_file1.js"></script>
+    <script src="admin_aanmelden.js"></script>
     <script src="producten_overzicht.js"></script>
 </head>
 
@@ -44,7 +44,8 @@
                                     <input type="password" id="login_wachtwoord" class="form-control mt-4" placeholder="Wachtwoord" minlength="5" required>
                                     <div id="login_warning_1"></div>
                                 </form>
-                                <button class="btn btn-cyan btn-block my-4" type="button" onclick="login_validatie();">Log in</button>
+                                <button class="btn btn-cyan btn-block my-4" type="button"
+                                    onclick="login_validatie();">Log in</button>
                             </div>
                         </div>
                     </div>
@@ -53,8 +54,7 @@
         </div>
 
         <!-- Warning Modal -->
-        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

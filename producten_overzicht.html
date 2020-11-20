@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,15 +15,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <link rel="stylesheet" type ="text/css" href="bz.css"/>
-    <script src="aanmelden_registratie_common_file1.js"></script>
+    <link rel="stylesheet" type="text/css" href="bz.css" />
+    <script src="admin_aanmelden.js"></script>
     <script src="producten_overzicht.js"></script>
 </head>
 
 <body onload="sessionControl(); start(); toon_gebruiker_naam();">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" >
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <img class="navbar-brand" src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-1" style="max-width: 100px" alt="Responsive image">
             <h3 style="color: white;">Producten Overzicht</h3>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,10 +61,9 @@
 
     <main>
         <div class="text-left">
-            <!-- PRODUCT OVERZICHT BUTTON CREATION-->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_details" onclick="toon_product('insert');">Product Toevoegen</button>
         </div>
-            
+
         <div class="modal fade" id="modal_details" tabindex="-1" role="dialog" aria-labelledby="modalform" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -74,7 +74,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- CREATION OF FORM ELEMENT WHEN PRODUCT OVERZICHT IS CLICKED-->
                         <form id="producttoevoegenform">
                             <div class="form-group">
                                 <input id="id" hidden>
@@ -94,7 +93,6 @@
                                 <label class="custom-file-label" for="beeld" data-browse="Bladeren">Kies (Nieuwe) Foto</label>
                                 <div style="border: 2px;" id="originaalbeeld"></div>
                                 <div id="product_beheren_warning_2"></div>
-
                             </div>
                             <div class="form-group">
                                 <label for="pomschrijving">Omschrijving</label>
@@ -103,12 +101,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="catid">Categorie</label>
-                                <select class="form-control" id="catid">
-                                    <!-- <option value="1">Klassieke Broodjes</option>
-                                    <option value="2">Speciale Broodjes</option>
-                                    <option value="3">Koude Schotels</option>
-                                    <option value="4">Drankjes</option>-->
-                                </select>
+                                <select class="form-control" id="catid"></select>
                                 <div id="product_beheren_warning_3"></div>
                             </div>
                             <div class="modal-footer">
@@ -118,12 +111,10 @@
                             </div>
                         </form>
                     </div>
-                    <!-- SAVE AND CANCEL BUTTONS CREATION -->
                 </div>
             </div>
         </div>
 
-        <!-- CREATION OF SECOND SECTION WITH THREE TEXT BOXES AND ONE BUTTON IN WEB PAGE -->
         <div class="container" id="filter">
             <div class="row">
                 <div class="col-sm">
@@ -144,16 +135,14 @@
                 </div>
             </div>
         </div>
-        
-        <!--CREATION OF THIRD SECTION SORTEER IN PAGE-->
+
         <div class="container">
             <div class="row">
                 <div class="col-6 col-sm-3">
                     <label for="sorteer">Sorteer</label>
-        
+
                     <select class="browser-default custom-select" id="sorteer" onchange="sorteer_producten()">
-                        <!--<option value="" id="" selected></option>-->
-                        <option value="spid" id="spid" >Product Id</option>
+                        <option value="spid" id="spid">Product Id</option>
                         <option value="snaam" id="snaam">Product Naam</option>
                         <option value="somschrijving" id="somschrijving">Omschrijving</option>
                         <option value="sprijs" id="sprijs">Product Prijs</option>
@@ -170,29 +159,25 @@
                         <th scope="col">Product Naam</th>
                         <th scope="col">Product Omschrijving</th>
                         <th scope="col">Categorie</th>
-                        <th scope="col">Product Prijs <br> (Basisprijs van gekozen beleg)</th>
+                        <th scope="col">Product Prijs<br>(Basisprijs van gekozen beleg)</th>
                         <th scope="col">Foto</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody id="productendata"></tbody>
             </table>
-        
+
             <nav aria-label="Page navigation example" style="background-color: wheat;">
                 <ul class="pagination pg-blue justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" tabindex="-1" onclick="paginas('vorige')">Vorige</a>
-                    </li>
-                    
-                    <li class="page-item">
-                        <a class="page-link" onclick="paginas('volgende')">Volgende</a>
-                    </li>
+                    <li class="page-item"><a class="page-link" tabindex="-1" onclick="paginas('vorige')">Vorige</a></li>
+                    <li class="page-item"><a class="page-link" onclick="paginas('volgende')">Volgende</a></li>
                 </ul>
             </nav>
         </div>
 
         <!--Verwijderen Modal-->
-        <div class="modal fade" id="modal_verwijderen" tabindex="-1" role="dialog" aria-labelledby="modalform" aria-hidden="true">
+        <div class="modal fade" id="modal_verwijderen" tabindex="-1" role="dialog" aria-labelledby="modalform"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -204,9 +189,9 @@
                     <div class="modal-body">
                         Wenst u dit product te verwijderen?
                     </div>
-                    <!-- Yes AND NO BUTTONS CREATION -->
                     <div class="modal-footer">
-                        <button type="button" id="Ja" class="btn btn-primary" data-dismiss="modal" onclick="bevestig_verwijderen();">Ja</button>
+                        <button type="button" id="Ja" class="btn btn-primary" data-dismiss="modal"
+                            onclick="bevestig_verwijderen();">Ja</button>
                         <button type="button" id="Neen" class="btn btn-primary" data-dismiss="modal">Neen</button>
                     </div>
                 </div>
@@ -215,7 +200,8 @@
         <div id="product_actie" style="display: hide;"></div>
 
         <!-- Warning Modal -->
-        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+        <div class="modal fade" id="waarschuwingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -223,9 +209,9 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        </div>
-                        <div class="modal-body" id="waarschuwingModalBody"></div>
-                        <div class="modal-footer">
+                    </div>
+                    <div class="modal-body" id="waarschuwingModalBody"></div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Sluit</button>
                     </div>
                 </div>
@@ -237,7 +223,7 @@
     <footer class="page-footer font-small darken-3 pt-4">
         <div class="container text-center">
             <div class="row">
-                
+
                 <div class="col-md-4 mb-md-0 mb-3">
                     <h6 class="text-uppercase font-weight-bold mb-4"><a href="aanmelden.html">Aanmelden</a></h6>
                 </div>
@@ -257,7 +243,7 @@
                 <div class="col-md-4 mb-md-0 mb-3">
                     <h6 class="text-uppercase font-weight-bold mb-4"><a href="promoties.html">Promoties</a></h6>
                 </div>
-                
+
             </div>
         </div>
 
