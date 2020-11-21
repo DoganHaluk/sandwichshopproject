@@ -1,179 +1,178 @@
 <!DOCTYPE html>
-
 <html>
- 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>HBH Broodjeszaak - Broodsoorten Overzicht</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type ="text/css" href="bz.css"/>
-        <script src="admin_aanmelden.js"></script>
-        <script src="broodsoorten_overzicht.js"></script>
-    </head>
 
-    <body onload="sessionControl();starten();toon_gebruiker_naam();">
-       
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark" >
-                <img class="navbar-brand" src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-1" style="max-width: 100px" alt="Responsive image">
-                <h3 style="color: white;">Broodsoorten Overzicht</h3>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="producten_overzicht.html">Producten Beheren</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="categorien_overzicht.html">Categorien Beheren</a>
-                        </li>
-                        <!--<li class="nav-item active">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HBH Broodjeszaak - Broodsoorten Overzicht</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bz.css" />
+    <script src="admin_aanmelden.js"></script>
+    <script src="broodsoorten_overzicht.js"></script>
+</head>
+
+<body onload="sessionControl(); starten(); toon_gebruiker_naam();">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <img class="navbar-brand" src="logo.png" alt="logo_hier" class="figure-img img-fluid z-depth-1" style="max-width: 100px" alt="Responsive image">
+            <h3 style="color: white;">Broodsoorten Overzicht</h3>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="producten_overzicht.html">Producten Beheren</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categorien_overzicht.html">Categorien Beheren</a>
+                    </li>
+                    <!--<li class="nav-item active">
                             <a class="nav-link" href="broodsoorten_overzicht.html">Broodsoorten Beheren</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="broodtypen_overzicht.html">Broodtypen Beheren</a>
                         </li>-->
-                        <li class="nav-item">
-                            <a class="nav-link" href="klanten_overzicht.html">Klanten Beheren</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact_overzicht.html">Contact Beheren</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="bestellingen_overzicht.html">Bestellingen Beheren</a>
-                        </li>
-                        <li class="nav-item dropdown" id="gebruikersnaam"></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-             
-        <main>
-            <div class="text-left">
-                <a href="" class="btn btn-blue mb-4" data-toggle="modal" onclick="toevoegen()" data-target="#product">Broodsoort Toevoegen</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="klanten_overzicht.html">Klanten Beheren</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_overzicht.html">Contact Beheren</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bestellingen_overzicht.html">Bestellingen Beheren</a>
+                    </li>
+                    <li class="nav-item dropdown" id="gebruikersnaam"></li>
+                </ul>
             </div>
-        
-            <div class="modal fade" id="product" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div id="modalHeader"></div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-        
-                        <form class="modal-body">        
-                            <div class="form-outline mb-4">
-                                <label for="bsnaam">Broodsoort Naam</label>
-                                <input type="text" id="bsnaam" class="form-control">
-                                <div id="warning_0"></div>
-                            </div>
-                            <label for="bsprijs">Broodsoort Prijs</label><br>
-                            <div class="input-group mb-4">
-                                <span class="input-group-text">€</span>
-                                <input type="text" id="bsprijs" placeholder="Prijs" class="form-control">
-                            </div>
-                            <label for="bsbeeld">Broodsoort Foto</label><br>
-                            <div class="custom-file">
-                                <input type="hidden" id="beeld_origineel">
-                                <input type="file" class="custom-file-input" id="bsbeeld">
-                                <label class="custom-file-label" for="beeld" data-browse="Bladeren">Kies (nieuw) beeld</label>
-                            </div>
-                        </form>
-        
-                        <div class="modal-footer d-flex justify-content-center" id="modalFooter"></div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="card-body">
-                    
-                <table class="table table-bordered table-responsive-md table-striped text-center">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Broodsoort ID</th>
-                            <th class="text-center">Broodsoort Naam</th>
-                            <th class="text-center">Broodsoort Prijs</th>
-                            <th class="text-center">Broodsoort Foto</th>
-                            <th class="text-center"></th>
-                        </tr>
-                    </thead>
-    
-                    <tbody id="tabel"></tbody>
-                </table>
-                
-                <nav aria-label="Page navigation example" style="background-color: wheat;">
-                    <ul class="pagination pg-blue justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" tabindex="-1" onclick="paginas('vorige')">Vorige</a>
-                        </li>
-                        
-                        <li class="page-item">
-                            <a class="page-link" onclick="paginas('volgende')">Volgende</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        
-            <div class="modal fade" id="verwijderen" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title w-100 font-weight-bold">Broodsoort verwijderen</h4>
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                        </div>
-        
-                        <div class="modal-body" id="verwijderWaarschuwing">
-                            <p>Wilt u deze broodsoort verwijderen?</p>
-                        </div>
-        
-                        <div class="modal-footer d-flex justify-content-center deleteButtonsWrapper" id="modalVerwijder"></div>
-                    </div>
-                </div>
-            </div>
-           
-        </main>
+        </nav>
+    </header>
 
-        <footer class="page-footer font-small darken-3 pt-4">
-            <div class="container text-center">
-                <div class="row">
-                    
-                    <div class="col-md-4 mb-md-0 mb-3">
-                        <h6 class="text-uppercase font-weight-bold mb-4"><a href="../aanmelden1.html">Aanmelden</a></h6>
+    <main>
+        <div class="text-left">
+            <a href="" class="btn btn-blue mb-4" data-toggle="modal" onclick="toevoegen()" data-target="#product">Broodsoort Toevoegen</a>
+        </div>
+
+        <div class="modal fade" id="product" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div id="modalHeader"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-    
-                    <hr class="clearfix w-100 d-md-none pb-3">
-    
-                    <div class="col-md-4 mb-md-0 mb-3">
-                        <h6 class="text-uppercase font-weight-bold mb-4"><a href="../producten1.html?catid=">Producten</a></h6>
-                        <p><a href="../producten1.html?catid=1">Klassieke Broodjes</a></p>
-                        <p><a href="../producten1.html?catid=2">Speciale Broodjes</a></p>
-                        <p><a href="../producten1.html?catid=3">Koude Schotels</a></p>
-                        <p><a href="../producten1.html?catid=4">Drankjes</a></p>
-                    </div>
-    
-                    <hr class="clearfix w-100 d-md-none pb-3">
-    
-                    <div class="col-md-4 mb-md-0 mb-3">
-                        <h6 class="text-uppercase font-weight-bold mb-4"><a href="../promoties.html">Promoties</a></h6>
-                    </div>
-                    
+
+                    <form class="modal-body">
+                        <div class="form-outline mb-4">
+                            <label for="bsnaam">Broodsoort Naam</label>
+                            <input type="text" id="bsnaam" class="form-control">
+                            <div id="warning_0"></div>
+                        </div>
+                        <label for="bsprijs">Broodsoort Prijs</label><br>
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">€</span>
+                            <input type="text" id="bsprijs" placeholder="Prijs" class="form-control">
+                        </div>
+                        <label for="bsbeeld">Broodsoort Foto</label><br>
+                        <div class="custom-file">
+                            <input type="hidden" id="beeld_origineel">
+                            <input type="file" class="custom-file-input" id="bsbeeld">
+                            <label class="custom-file-label" for="beeld" data-browse="Bladeren">Kies (nieuw) beeld</label>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer d-flex justify-content-center" id="modalFooter"></div>
                 </div>
             </div>
-    
-            <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
-                <a href="../index1.html"> HBH Broodjeszaak</a>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                    <tr>
+                        <th class="text-center">Broodsoort ID</th>
+                        <th class="text-center">Broodsoort Naam</th>
+                        <th class="text-center">Broodsoort Prijs</th>
+                        <th class="text-center">Broodsoort Foto</th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody id="tabel"></tbody>
+            </table>
+
+            <nav aria-label="Page navigation example" style="background-color: wheat;">
+                <ul class="pagination pg-blue justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" tabindex="-1" onclick="paginas('vorige')">Vorige</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" onclick="paginas('volgende')">Volgende</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="modal fade" id="verwijderen" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100 font-weight-bold">Broodsoort verwijderen</h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body" id="verwijderWaarschuwing">
+                        <p>Wilt u deze broodsoort verwijderen?</p>
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-center deleteButtonsWrapper" id="modalVerwijder">
+                    </div>
+                </div>
             </div>
-        </footer>
-    </body>
-    
-</html>         
+        </div>
+
+    </main>
+
+    <footer class="page-footer font-small darken-3 pt-4">
+        <div class="container text-center">
+            <div class="row">
+
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4"><a href="../aanmelden1.html">Aanmelden</a></h6>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4"><a href="../producten1.html?catid=">Producten</a>
+                    </h6>
+                    <p><a href="../producten1.html?catid=1">Klassieke Broodjes</a></p>
+                    <p><a href="../producten1.html?catid=2">Speciale Broodjes</a></p>
+                    <p><a href="../producten1.html?catid=3">Koude Schotels</a></p>
+                    <p><a href="../producten1.html?catid=4">Drankjes</a></p>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <h6 class="text-uppercase font-weight-bold mb-4"><a href="../promoties.html">Promoties</a></h6>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">Alle rechten voorbehouden © 2020:
+            <a href="../index1.html"> HBH Broodjeszaak</a>
+        </div>
+    </footer>
+</body>
+
+</html>
