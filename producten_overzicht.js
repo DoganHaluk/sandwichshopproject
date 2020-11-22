@@ -67,7 +67,6 @@ function vernieuw_producten_tabel() {
         if (producten[i].pid !== null) {
             console.log(producten.beeld)
             var catnaam = haalcatnaam(producten[i].catid);
-            //console.log(catnaam);
             var tabledata = "";
             tabledata += "<tr>";
             tabledata += "<td>" + producten[i].pid + "</td>";
@@ -81,7 +80,6 @@ function vernieuw_producten_tabel() {
 
             tabledata += "<td>" + '<img src="https:' + assets_path + "/" + producten[i].beeld.name + '" class="figure-img img-fluid z-depth-1" style="max-width: 100px" alt="Responsive image"/>' + "</td>";
 
-            //tabledata += "<td>" + +"</td>";
             tabledata += "<td>" + `<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_verwijderen" onclick="find_product(${producten[i].pid})">Verwijderen</button>` +
                 `<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_details" onclick="toon_product('update', ${producten[i].pid})">Bijwerken</button>` +
                 "</td>";
@@ -333,7 +331,6 @@ function filter_sort_display() {
 
         tabledata += "<td>" + catnaam + "</td>";
 
-
         tabledata += "<td>" + "€ " + items[i].prodprijs + "</td>";
         tabledata += "<td>" + '<img src="https:' + assets_path + "/" + items[i].beeld.name + '" class="figure-img img-fluid z-depth-1" style="max-width: 100px" alt="Responsive image"/>' + "</td>";
 
@@ -357,7 +354,6 @@ function filter_producten() {
     if (fnaam != null || fomschrijving != null || fprijs != null) {
         $.ajax({
             url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=producten1",
-            //headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
             type: "GET",
             data: {
                 "filter": [["pnaam", "LIKE", fnaam + "%"], ["pomschrijving", "LIKE", "%" + fomschrijving + "%"], ["prodprijs", ">=", fprijs]],
@@ -512,6 +508,5 @@ function paginas(dir) {
     else if (huidige_pagina > 1 && huidige_pagina <= aantal_paginas && dir == "vorige") {
         huidige_pagina--;
     }
-
     read_items();
 }
