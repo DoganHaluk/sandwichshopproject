@@ -23,7 +23,6 @@ function read_items() {
         method: 'GET',
         url: "https://api.data-web.be/item/read?project=fjgub4eD3ddg&entity=category",
         headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
-
     })
         .done(function (response) {
             category = response.data.items
@@ -98,22 +97,17 @@ function haalcatnaam(catid) {
     for (var i = 0; i < category.length; i++) {
         if (category[i].catid == catid) {
             return category[i].catnaam;
-
         }
-
     }
-
 }
 
 
 function bijwerken_producten() {
-
     huidig_product.pnaam = document.getElementById("pnaam").value;
     huidig_product.pomschrijving = document.getElementById("pomschrijving").value;
     huidig_product.prodprijs = document.getElementById("prodprijs").value;
     huidig_product.catid = document.getElementById("catid").value;
     huidig_product.beeld = document.getElementById("beeldoriginal").value;
-
 
     vernieuw_producten_tabel();
     console.log(huidig_product);
@@ -238,7 +232,6 @@ function bewarenproducten() {
         });
     }
 
-
     if (product_actie == "insert") {
         controleer_product_toevoegen();
     }
@@ -257,9 +250,6 @@ function toon_product(actie, prod_id) {
         document.getElementById("catid").value = 0;
         document.getElementById("originaalbeeld").innerHTML = "";
         document.getElementById("product_modal_titel").innerHTML = "Product toeveogen";
-        //document.getElementById("beeld").value = huidig_product.beeld;
-        //json stringify
-
         document.getElementById("beeldoriginal").value = "";
     }
 
@@ -329,10 +319,6 @@ function bevestig_verwijderen() {
 }
 
 
-
-
-
-
 function filter_sort_display() {
     document.getElementById("productendata").innerHTML = "";
 
@@ -360,7 +346,6 @@ function filter_sort_display() {
         document.getElementById("productendata").innerHTML += tabledata;
     }
 }
-
 
 
 function filter_producten() {
@@ -395,9 +380,8 @@ function filter_producten() {
                 console.log(msg);
             });
     }
-
-
 }
+
 
 function sorteer_producten() {
     items = "";
