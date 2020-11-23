@@ -163,7 +163,6 @@ function waarschuwing_modal(warning) {
         document.getElementById("waarschuwingModalLabel").innerHTML = '<h3 class="modal-title">Aanmelden mislukt</h3>';
         document.getElementById("waarschuwingModalBody").innerHTML = '<p>Uw aanmelden is mislukt vanwege onbekende redenen. Neem dan telefonisch contact met ons op.</p>';
     }
-
 }
 
 
@@ -175,9 +174,10 @@ function toon_gebruiker_naam() {
     console.log(sessionStorage);
     if (token_check != null) {
         document.getElementById("gebruikersnaam").style.display = "block";
-        document.getElementById("gebruikersnaam").innerHTML = `<a class="nav-link dropdown-toggle" href="#" role="button" value= ""  data-toggle="dropdown">${username}</a>
+        document.getElementById("gebruikersnaam").innerHTML = 
+        `<a class="nav-link dropdown-toggle" href="#" role="button" value= ""  data-toggle="dropdown">${username}</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <button class="btn btn-link" id="logout" onclick="afmelden()" style="color: black;">Log Out</button>
+            <button class="btn btn-link" id="logout" onclick="afmelden()" style="color: black;">Log Out</button>
         </div>`;
     }
     else {
@@ -211,6 +211,7 @@ function afmelden() {
             console.log(msg);
         });
 }
+
 
 function sessionControl() {
     var token = sessionStorage.getItem("token")
