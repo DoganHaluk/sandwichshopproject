@@ -106,7 +106,7 @@ function find_contact_data(cfid) {
     }
 }
 
-
+// popup/update
 function contacten_opvolgen() {
     var opgelost = document.getElementById("opgelost");
     if (opgelost.checked) {
