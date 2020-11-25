@@ -11,7 +11,7 @@ function start() {
     read_items();
 }
 
-
+// items/read
 function read_items() {
     $.ajax
         ({
@@ -46,7 +46,7 @@ function read_items() {
         });
 }
 
-
+// items/table
 function vernieuw_contact_tabel() {
     document.getElementById("contactformulierdata").innerHTML = "";
     var opgelost;
@@ -80,7 +80,7 @@ function vernieuw_contact_tabel() {
     }
 }
 
-
+// popup/create
 function get_contact_data(cfid) {
     find_contact_data(cfid);
     document.getElementById("naam").value = huidig_product.naam;
@@ -164,7 +164,7 @@ function contacten_opvolgen() {
     }
 }
 
-
+// popup/delete
 function bevestig_verwijderen() {
     $.ajax
         ({
@@ -190,7 +190,7 @@ function bevestig_verwijderen() {
         });
 }
 
-
+// popup/empty
 function OnclickofBestellingenOpvolgen() {
     document.getElementById("naam").value = "";
     document.getElementById("email").value = "";
@@ -201,7 +201,7 @@ function OnclickofBestellingenOpvolgen() {
     document.getElementById("opgelost").value = "";
 }
 
-
+// pagination
 function paginas(dir) {
     if (huidige_pagina >= 1 && huidige_pagina < aantal_paginas && dir == "volgende") {
         huidige_pagina++;
@@ -212,7 +212,7 @@ function paginas(dir) {
     start();
 }
 
-
+// filtration
 function filteren() {
 
     var date = $("#filterdatum").val();;
@@ -242,7 +242,7 @@ function filteren() {
     start();
 }
 
-
+// sortation
 function sortering() {
     sorteren[0] = $("#sorteer").val();
     start();
